@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from .measure import split_of
@@ -33,7 +33,8 @@ def run_corpus(corpora: Path, split: str, jobs: int, timeout: int, out: Path) ->
         return r
 
     with ThreadPoolExecutor(jobs) as ex, out.open("a") as fh:
-        for i, r in enumerate(ex.map(one, todo), 1):
+        # write as results complete: one stuck repo must not hold back the others
+        for i, r in enumerate((f.result() for f in as_completed([ex.submit(one, m) for m in todo])), 1):
             fh.write(json.dumps(r) + "\n")
             fh.flush()
             print(f"[{i}/{len(todo)}] {r['root']} " + (r.get("error", "")[:60] or

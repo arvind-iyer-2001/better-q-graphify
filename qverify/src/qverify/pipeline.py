@@ -8,9 +8,12 @@ from .keywords import q_keywords
 from .merge import merge
 
 
+MAX_BYTES = 1_000_000  # larger .q files are data dumps / generated code; parsing them can run away
+
+
 def discover(root: Path) -> list[Path]:
     return sorted(p.resolve() for p in root.rglob("*.q")
-                  if p.is_file() and "graphify-out" not in p.parts and ".venv" not in p.parts)
+                  if p.is_file() and p.stat().st_size <= MAX_BYTES and "graphify-out" not in p.parts and ".venv" not in p.parts)
 
 
 def _calibrated() -> dict:
