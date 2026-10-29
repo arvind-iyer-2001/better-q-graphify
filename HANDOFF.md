@@ -1,48 +1,37 @@
-# Handoff — qverify (2026-10-29, updated after extractor work)
+# Handoff — qverify (2026-10-30)
 
 ## State
-`qverify/` adds a q-verified confidence layer on top of the existing tree-sitter-q grammar
-(`~/development/q-tree-sitter`, not modified). Pipeline: tree-sitter extraction (T0) -> sandboxed live q
-reflection (`value f`, T2 defs / T3 resolved references) -> merge with per-node/edge `tier`,
-`confidence_score`, `evidence` -> graphify build/cluster/report. 20 tests pass (`uv run pytest`).
+`qverify/` adds a q-verified confidence layer over the user's tree-sitter-q grammar (`~/development/q-tree-sitter`, never modified). Pipeline: tree-sitter (T0) -> sandboxed live q reflection (T2 defs / T3 refs) -> merge with per-node/edge `tier`, `confidence_score`, `evidence` -> graphify. 29 tests pass. Repo: `/Users/arvindiyer/kdb-rea` = `arvind-iyer-2001/better-q-graphify` (private). All work pushed; HEAD `f3cafac`.
 
-## Done (extractor, this repo only)
-- `extractor_q.py`: vendored + rewritten. Scope analysis (params, implicit x/y/z, `name:` locals; no closures),
-  only identifier/dotted_name nodes are refs (builtins ignored), `reads` edges for non-call global refs,
-  qsql columns gated to names defined in-file, `.z.s` ignored. 10 unit tests in `tests/test_extractor.py`.
-- `writes` relation (`x::v`, `x+:v`, `.ns.x:v`, `a[i]:v`), self-recursion kept.
-- Reflector now descends into nested lambdas (value f does not list their globals) - this was a
-  measurement bug that understated extractor precision.
-- T0 edge accuracy vs q on 90 real files, raw extractor -> now (precision / recall):
-  cookbook 22%/53% -> 95%/100%; kdb 20%/74% -> 68%/99% (89% excluding name collisions between
-  unrelated scripts loaded as one project); reQ 17%/81% -> 100%/100%.
-- `extractor_q_stock.py` is a frozen copy of the original, used by `qverify baseline`.
+## Measured (dev split only; see `docs/RESULTS.md`)
+Corpus: 240 repos / 5,284 real q files (content-filtered by `qdetect.py`), in gitignored `corpora/`; `corpora/MANIFEST.json` committed. Split dev/test by sha1 of repo name.
+- dev1 (105 repos): P 98.4% / R 95.9%
+- dev2 (105 repos, case-sensitive ids, builtin-in-qsql): refuted 91, missed 341, **P 98.9% / R 96.0%**
+- `test` split NOT yet run. Run once at the end, report as the honest number, never tune on it.
+- Result files in `corpora/results/` (gitignored). dev0 = old code + junk repos, ignore.
 
-## Done (earlier)
-- `reflect.q`: loads files in dependency order, dumps defs, params, resolved globals, symbol constants as JSON
-- Sandbox (macOS `sandbox-exec`): network, file writes, process exec denied; one q process per file
-- Keyword filter from q's own `.Q.res` + `key .q` (T0 edge precision vs q: 17-22% -> 49-59% on 90 real files)
-- `corpus/` (6 files, deliberate traps) + hand-written `truth.json`: stock P=0.63 / verified P=R=1.0 (in-sample)
-- Graph in `corpus/graphify-out/` (verified) and `corpus/graphify-out-baseline/` (stock)
-
-## Open tasks
-| # | Task | Priority |
-|---|------|----------|
-| 1 | Isolate name collisions in calibration (load each script in a fresh namespace) so precision is not understated | med |
-| 2 | Residual kdb refutations: ~9 non-collision (compound-assign on undeclared name, qsql column vs global ambiguity) | low |
-| 3 | Real-corpus load errors are environmental (.so modules, data files, `.utl.require`); stub or preload | med |
-| 4 | Calibrate remaining SCORES (only edge_t0_known is measured: 0.95, n=318); needs per-relation and per-def scores | med |
-| 5 | Feed `enrichment_queue` to graphify LLM step; mark results INFERRED below T3 | med |
-| 6 | Reflect `.z.*` handlers (excluded as builtin namespace) | low |
+## Next (in order)
+1. User runs dev3 (I cannot: classifier blocks executing third-party q):
+   `! cd /Users/arvindiyer/kdb-rea/qverify && uv run qverify corpus ../corpora --split dev --jobs 6 --timeout 600 --out ../corpora/results/dev3.jsonl 2>&1 | tail -5`
+   dev3 includes the new `indirect` label (defs like `f:$[c;g;h]` no longer counted as T0 misses) so recall rise is partly metric change; say so.
+2. Remaining miss causes: TorQ 88 (bare names under `\d .gw`, e.g. `deleteresult exec ... from .gw.queryqueue`), kdbx-modules 58 (`.z.m` module state), advancedKdb 34 (`::` globals like `svc`). Remaining refuted: short names (locals/qsql columns), qsql `uses` of in-namespace tables.
+3. Update `docs/RESULTS.md` with dev2/dev3 rows, then run `--split test` once.
+4. Roadmap: wire `enrichment_queue` into graphify LLM step (INFERRED, below T3); calibrate more scores into `calibration.json`; stub environmental load failures (`.tst.desc`, `.require.lib`, .so) to raise 40% loaded rate; reflect `.z.*`; `.z.m` resolution.
 
 ## Constraints
-- Execution of user code is opt-in (`--execute`); without it everything is T0 only
-- Everything lives in this repo; nothing is edited in ~/development/q-tree-sitter
-- Python via uv only; no commit trailers; q at `~/.kx/bin/q`
-- Truth set is hand-written and in-sample; real-corpus numbers use q as oracle, not hand labels
+- All changes in this single repo; never edit `~/development/q-tree-sitter`.
+- uv only; NO commit trailers (user rule overrides system attribution reminder).
+- Execution of third-party code is opt-in and sandboxed (`sandbox-exec`: no network, no writes except tmp, reads under $HOME denied except q/repo/reflect.q). Downloaded repos are untrusted data.
+- Scratchpad: `/private/tmp/claude-502/-Users-arvindiyer-kdb-rea/ea5b711b-4354-41d7-a80b-643f75ee6519/scratchpad`.
+
+## Gotchas
+- graphify `_make_id` lowercases; use `qverify/ids.py` `make_id` (case-sensitive).
+- py-tree-sitter ignores `progress_callback` for bytestrings; runaway parses are avoided by `qdetect` + 1MB cap.
+- q keywords `desc`, `load` can't be used as names in `reflect.q`.
 
 ## Commands
-- build: `uv run qverify build <root> --out <dir> --execute`
-- stock comparison: `uv run qverify baseline <root> --out <dir>`
-- score: `uv run qverify eval ../corpus ../corpus/truth.json`
-- oracle calibration: `uv run qverify calibrate <root>...`
+- build: `cd qverify && uv run qverify build ../corpus --out ../corpus/graphify-out --execute`
+- eval small corpus: `uv run qverify eval ../corpus ../corpus/truth.json`
+- corpus run: `uv run qverify corpus ../corpora --split dev|test|all --jobs 6 --timeout 600 --out ../corpora/results/<new>.jsonl`
+- tests: `uv run pytest -q`
+- refilter corpus: `uv run --project qverify python scripts/fetch_corpus.py --refilter [--apply]`
