@@ -3,3 +3,5 @@ __pycache__/
 graphify-out*/
 *.pyc
 .pytest_cache/
+corpora/*
+!corpora/MANIFEST.json

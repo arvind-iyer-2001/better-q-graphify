@@ -57,12 +57,16 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
 
     # ---- runtime ownership --------------------------------------------------
     owner: dict[str, str] = {}
-    redefined: set[str] = set()
-    for fr in rt.get("files", []):
+    redefined: set[tuple[str, str]] = set()
+    load_idx: dict[str, int] = {}
+    for i, fr in enumerate(rt.get("files", [])):
+        load_idx[rel(fr["file"])] = i
         for q in fr["new"] + fr["changed"]:
             owner[q] = rel(fr["file"])
-        redefined.update(fr["changed"])
-    rt_defs = {d["name"]: d for d in rt.get("defs", [])}
+        redefined.update((rel(fr["file"]), q) for q in fr["changed"])
+    rt_defs: dict[tuple[str, str], dict] = {}
+    for d in rt.get("defs", []):
+        rt_defs[(rel(d["file"]) if d.get("file") else owner.get(d["name"], "?"), d["name"])] = d
     file_status = {rel(f): s["status"] for f, s in status.items()}
 
     # ---- file nodes ---------------------------------------------------------
@@ -74,29 +78,40 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
                  [f"file on disk; run status: {file_status.get(r, 'n/a')}"],
                  run_status=file_status.get(r, "n/a"))
 
-    # ---- definitions --------------------------------------------------------
-    t0_defs: dict[str, tuple[str, int]] = {}
+    # ---- definitions: one node per (file, qualified name) -------------------
+    t0_defs: dict[tuple[str, str], int] = {}
     for f, d in t0.items():
         for q, line in d["defs"].items():
-            t0_defs.setdefault(q, (rel(f), line))
-    qnames = set(t0_defs) | set(rt_defs)
-    def_id: dict[str, str] = {}
-    for q in sorted(qnames):
-        rd = rt_defs.get(q)
-        file, line = t0_defs.get(q, (owner.get(q, "?"), 1))
-        nid = def_id[q] = _make_id(file, q)
+            t0_defs.setdefault((rel(f), q), line)
+    keys = sorted(set(t0_defs) | set(rt_defs))
+    by_name: dict[str, list[tuple[str, str]]] = {}
+    for k in sorted(keys, key=lambda k: load_idx.get(k[0], -1)):
+        by_name.setdefault(k[1], []).append(k)
+    def_id: dict[tuple[str, str], str] = {}
+
+    def resolve(q: str, from_file: str):
+        """The definition a reference to `q` made in `from_file` binds to: same file, else last loaded."""
+        c = by_name.get(q)
+        if not c:
+            return None
+        return (from_file, q) if (from_file, q) in def_id else c[-1]
+
+    for k in keys:
+        file, q = k
+        rd = rt_defs.get(k)
+        line = t0_defs.get(k, 1)
+        nid = def_id[k] = _make_id(file, q)
         run = file_status.get(file, "n/a")
-        extra = {}
+        dup = len(by_name[q]) > 1
         if rd:
             kind = rd["kind"]
             ev = [f"defined at runtime (q type {rd['t']}, {kind})"]
-            if q in t0_defs:
-                ev.append("also found by tree-sitter")
-            else:
-                ev.append("NOT visible to tree-sitter (dynamic definition)")
-            if q in redefined:
+            ev.append("also found by tree-sitter" if k in t0_defs else "NOT visible to tree-sitter (dynamic definition)")
+            if k in redefined:
                 ev.append("redefined by a later file")
-            add_node(nid, q, file, line, kind, "T2", S["def_t2"], ev, **extra)
+            if dup:
+                ev.append(f"name defined in {len(by_name[q])} files; references bind to the same file, else the last loaded")
+            add_node(nid, q, file, line, kind, "T2", S["def_t2"], ev)
             if kind == "lambda":
                 nodes[nid]["params"] = rd["params"]
                 nodes[nid]["globals_ctx"] = rd["ctx"]
@@ -119,14 +134,14 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
                      ["definition site"])
 
     # ---- edges: T3 from reflection ------------------------------------------
-    t3: dict[tuple[str, str], dict] = {}
-    for q, rd in rt_defs.items():
+    t3: dict[tuple[str, str, str], dict] = {}
+    for (file, q), rd in rt_defs.items():
         for ref in rd.get("refs", []):
-            t3[(q, ref["res"])] = ref
-    t0_keys: dict[tuple[str, str], tuple[str, str, int]] = {}
+            t3[(file, q, ref["res"])] = ref
+    t0_keys: dict[tuple[str, str, str], tuple[str, int]] = {}
     for f, d in t0.items():
-        for s, t, relation, line in d["edges"]:
-            t0_keys.setdefault((s, t), (rel(f), relation, line))
+        for s_, t_, relation, line in d["edges"]:
+            t0_keys.setdefault((rel(f), s_, t_), (relation, line))
 
     def stub(q, kind, tier, score, ev, file, line):
         nid = _make_id("unresolved" if kind == "unresolved" else "external", q)
@@ -134,59 +149,60 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
             add_node(nid, q, file, line, kind, tier, score, ev, dangling=(kind == "unresolved"))
         return nid
 
-    for (src, tgt), ref in t3.items():
-        sfile = nodes[def_id[src]]["source_file"]
-        agree = (src, tgt) in t0_keys
-        line = t0_keys[(src, tgt)][2] if agree else nodes[def_id[src]]["source_location"].lstrip("L")
-        line = int(line)
-        if tgt in def_id:
-            kind = nodes[def_id[tgt]]["kind"]
+    for (file, src, res), ref in t3.items():
+        skey = (file, src)
+        agree = (file, src, res) in t0_keys
+        line = t0_keys[(file, src, res)][1] if agree else int(nodes[def_id[skey]]["source_location"].lstrip("L"))
+        tkey = resolve(res, file)
+        if tkey is not None:
+            kind = nodes[def_id[tkey]]["kind"]
             relation = "calls" if kind in ("lambda", "function") else "uses"
-            if agree and t0_keys[(src, tgt)][1] == "writes":
+            if agree and t0_keys[(file, src, res)][0] == "writes":
                 relation = "writes"  # q only says "references"; the syntax knows it is an assignment
             sc = S["edge_agree"] if agree else S["edge_t3"]
-            add_edge(def_id[src], def_id[tgt], relation, sfile, line, "T3", sc,
+            add_edge(def_id[skey], def_id[tkey], relation, file, line, "T3", sc,
                      ["q resolved this global reference (value f)"] + (["tree-sitter agrees"] if agree else ["tree-sitter missed it"]))
         elif ref["ex"]:
             continue  # resolves to a q builtin (e.g. .z.p); not part of the project graph
         else:
-            nid = stub(tgt, "unresolved", "T3", S["edge_dangling"],
-                       [f"q resolves '{ref['raw']}' in context {rt_defs[src]['ctx'] or '.'} to {tgt}, which is undefined"],
-                       sfile, line)
-            add_edge(def_id[src], nid, "calls", sfile, line, "T3", S["edge_dangling"],
+            rd = rt_defs[skey]
+            nid = stub(res, "unresolved", "T3", S["edge_dangling"],
+                       [f"q resolves '{ref['raw']}' in context {rd['ctx'] or '.'} to {res}, which is undefined"],
+                       file, line)
+            add_edge(def_id[skey], nid, "calls", file, line, "T3", S["edge_dangling"],
                      ["dangling reference: raises an error at runtime when executed"])
-            queue.append({"node": nid, "reason": "dangling reference", "snippet": f"{src} -> {tgt}"})
+            queue.append({"node": nid, "reason": "dangling reference", "snippet": f"{src} -> {res}"})
 
     def sym_candidates(rd, sym):
         ctx = rd.get("ctx") or ""
-        out = [sym]
-        if not sym.startswith(".") and ctx:
-            out.insert(0, f".{ctx}.{sym}")
-        return out
+        return ([f".{ctx}.{sym}"] if not sym.startswith(".") and ctx else []) + [sym]
 
     # ---- edges: symbol constants naming defined objects (passed by name, e.g. `trade) ----
-    for q, rd in rt_defs.items():
+    for (file, q), rd in rt_defs.items():
         for raw_sym in rd.get("symconst", []):
-            sym = next((c for c in sym_candidates(rd, raw_sym) if c in def_id), None)
-            if sym is not None and (q, sym) not in t3 and (q, sym) not in t0_keys:
-                add_edge(def_id[q], def_id[sym], "references", nodes[def_id[q]]["source_file"],
-                         int(nodes[def_id[q]]["source_location"].lstrip("L")), "T3c", S["edge_symconst"],
-                         [f"symbol constant `{sym} names a defined {nodes[def_id[sym]]['kind']}; may be data, not a reference"])
+            cand = next((c for c in sym_candidates(rd, raw_sym) if resolve(c, file)), None)
+            if cand is not None and (file, q, cand) not in t3 and (file, q, cand) not in t0_keys:
+                tkey = resolve(cand, file)
+                add_edge(def_id[(file, q)], def_id[tkey], "references", file,
+                         int(nodes[def_id[(file, q)]]["source_location"].lstrip("L")), "T3c", S["edge_symconst"],
+                         [f"symbol constant `{cand} names a defined {nodes[def_id[tkey]]['kind']}; may be data, not a reference"])
 
     # ---- edges: T0 not already covered --------------------------------------
-    reflected = {q for q, d in rt_defs.items() if d["kind"] == "lambda"}
-    for (src, tgt), (file, relation, line) in t0_keys.items():
-        if (src, tgt) in t3 or src not in def_id:
+    reflected = {k for k, d in rt_defs.items() if d["kind"] == "lambda"}
+    for (file, src, tgt), (relation, line) in t0_keys.items():
+        skey = (file, src)
+        if (file, src, tgt) in t3 or skey not in def_id:
             continue
-        if src in rt_defs and any(tgt == c for sy in rt_defs[src].get("symconst", []) for c in sym_candidates(rt_defs[src], sy)):
-            if tgt in def_id:
-                add_edge(def_id[src], def_id[tgt], relation, file, line, "T3c", S["edge_qsql_support"],
-                         ["tree-sitter edge supported by a name inside a compiled qsql expression "
-                          "(value f keeps those in constants, not in the globals list)"])
-                continue
+        tkey = resolve(tgt, file)
+        if skey in rt_defs and tkey is not None and any(
+                tgt == c for sy in rt_defs[skey].get("symconst", []) for c in sym_candidates(rt_defs[skey], sy)):
+            add_edge(def_id[skey], def_id[tkey], relation, file, line, "T3c", S["edge_qsql_support"],
+                     ["tree-sitter edge supported by a name inside a compiled qsql expression "
+                      "(value f keeps those in constants, not in the globals list)"])
+            continue
         tail = tgt.rsplit(".", 1)[-1]
-        is_kw = tgt not in def_id and (tail in keywords or tail in ("x", "y", "z") or not tail or not tail[0].isalpha())
-        if src in reflected:
+        is_kw = tkey is None and (tail in keywords or tail in ("x", "y", "z") or not tail or not tail[0].isalpha())
+        if skey in reflected:
             refuted.append({"edge": f"{src} -> {tgt}", "relation": relation, "file": file, "line": line, "kw": is_kw,
                             "why": "q primitive/local, not a user global" if is_kw else
                                    "q's resolved globals for this function do not include it (local/param/symbol)"})
@@ -194,13 +210,13 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
         if is_kw:
             filtered.append(f"{src} -> {tgt}")
             continue
-        if tgt in def_id:
-            add_edge(def_id[src], def_id[tgt], relation, file, line, "T0", S["edge_t0_known"],
+        if tkey is not None:
+            add_edge(def_id[skey], def_id[tkey], relation, file, line, "T0", S["edge_t0_known"],
                      ["tree-sitter name match to a known definition; caller not executed"])
         else:
             nid = stub(tgt, "external", "T0", S["edge_t0_unknown"],
                        ["referenced name has no definition in this corpus"], file, line)
-            add_edge(def_id[src], nid, relation, file, line, "T0", S["edge_t0_unknown"],
+            add_edge(def_id[skey], nid, relation, file, line, "T0", S["edge_t0_unknown"],
                      ["tree-sitter only; target undefined in corpus"])
 
     # ---- imports ------------------------------------------------------------

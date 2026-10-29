@@ -38,7 +38,7 @@ def reflect(root: Path, files: list[Path], timeout: int = 60) -> dict:
         prof.write_text(_profile(td))
         out = Path(td) / "out.json"
         env = {**os.environ, "QV_FILES": ":".join(str(f) for f in files), "QV_OUT": str(out)}
-        cmd = ["sandbox-exec", "-f", str(prof), q_binary(), str(REFLECT), "-q"]
+        cmd = ["sandbox-exec", "-f", str(prof), q_binary(), str(REFLECT), "-q", "-w", "1024"]
         try:
             p = subprocess.run(cmd, cwd=root, env=env, stdin=subprocess.DEVNULL,
                                capture_output=True, text=True, timeout=timeout)
@@ -72,6 +72,8 @@ def reflect_isolated(root: Path, order: list[Path], deps: dict[Path, list[Path]]
         rec = next((x for x in r["files"] if Path(x["file"]).resolve() == f), None)
         if rec:
             files.append(rec)
-        for d in r["defs"]:
-            defs.setdefault(d["name"], d)
+            mine = set(rec["new"]) | set(rec["changed"])
+            for d in r["defs"]:
+                if d["name"] in mine:
+                    defs[(str(f), d["name"])] = {**d, "file": str(f)}
     return {"files": files, "defs": list(defs.values()), "errors": errors}

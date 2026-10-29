@@ -25,7 +25,24 @@ def main() -> None:
     c = sub.add_parser("calibrate", help="score tree-sitter edges against q's own resolution (no hand truth)")
     c.add_argument("roots", type=Path, nargs="+")
     c.add_argument("--write", type=Path, help="write pooled measured precision to this calibration.json")
+    m = sub.add_parser("measure", help="(internal) measure one root, print JSON")
+    m.add_argument("root", type=Path)
+    k = sub.add_parser("corpus", help="measure every repo in a corpora dir (parallel, per-repo timeout)")
+    k.add_argument("corpora", type=Path)
+    k.add_argument("--split", choices=["dev", "test", "all"], default="dev")
+    k.add_argument("--jobs", type=int, default=4)
+    k.add_argument("--timeout", type=int, default=900)
+    k.add_argument("--out", type=Path, required=True, help="jsonl results file (resumable)")
     a = ap.parse_args()
+
+    if a.cmd == "measure":
+        from .measure import measure
+        print(json.dumps(measure(a.root)))
+        return
+    if a.cmd == "corpus":
+        from .corpus import run_corpus
+        run_corpus(a.corpora, a.split, a.jobs, a.timeout, a.out)
+        return
 
     if a.cmd == "calibrate":
         pooled_ag = pooled_rf = 0
