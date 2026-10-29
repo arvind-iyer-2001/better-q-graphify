@@ -78,3 +78,22 @@ def test_system_d_switches_namespace(tmp_path):
 def test_glued_assignment_name_and_module_namespace(tmp_path):
     e = edges(tmp_path, "f:{.z.m.log:1; .z.m.other x}\n")
     assert not any(t.startswith(".z.m") or ":" in t for _, _, t in e)
+
+
+def test_chained_assignment_defines_both_names(tmp_path):
+    e = edges(tmp_path, "g:1\n.t.a:.t.b:{g}\n")
+    assert (".t.a", "writes", ".t.b") not in e and (".t.a", "reads", "g") in e and (".t.b", "reads", "g") in e
+
+
+def test_typed_null_suffix_not_an_identifier(tmp_path):
+    assert edges(tmp_path, "f:{(1f;0nf;0wu;0Nj)}\n") == set()
+
+
+def test_column_update_inside_qsql_is_not_a_global_write(tmp_path):
+    e = edges(tmp_path, "t:1\nf:{update c-:1 from t}\n")
+    assert not any(r == "writes" for _, r, _ in e)
+
+
+def test_relative_dotted_name_is_namespace_relative(tmp_path):
+    e = edges(tmp_path, "\\d .ml\ni.g:{x}\nf:{i.g x}\n")
+    assert (".ml.f", "calls", ".ml.i.g") in e

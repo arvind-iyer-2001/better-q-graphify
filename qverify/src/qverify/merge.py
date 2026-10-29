@@ -188,7 +188,10 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
                          [f"symbol constant `{cand} names a defined {nodes[def_id[tkey]]['kind']}; may be data, not a reference"])
 
     # ---- edges: T0 not already covered --------------------------------------
-    reflected = {k for k, d in rt_defs.items() if d["kind"] == "lambda"}
+    # a def whose right-hand side is not a lambda literal (e.g. `f:$[c;g;h]`) has tree-sitter edges from the
+    # *defining expression*, while q reflects the chosen function: the two are not comparable
+    t0_lambda = {(rel(f), q) for f, d in t0.items() for q in d.get("lambda_defs", ())}
+    reflected = {k for k, d in rt_defs.items() if d["kind"] == "lambda" and (k not in t0_defs or k in t0_lambda)}
     for (file, src, tgt), (relation, line) in t0_keys.items():
         skey = (file, src)
         if (file, src, tgt) in t3 or skey not in def_id:

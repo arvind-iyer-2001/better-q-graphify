@@ -1,39 +1,23 @@
 [
  {
-  "repo": "lunalawl/gh-patches",
-  "dir": "lunalawl__gh-patches",
-  "sha": "2399d241fd75e95a326b2eff01d9306217660c93",
-  "q_files": 3737,
-  "stars": 12,
-  "license": "",
-  "pushed": "2026-10-23T22:51:48Z"
- },
- {
   "repo": "gabiteodoru/human-eval-curated",
   "dir": "gabiteodoru__human-eval-curated",
   "sha": "2e07a6dc87bb10e71d646ce148cd7bb6b4aaff22",
   "q_files": 492,
   "stars": 0,
   "license": "mit",
-  "pushed": "2025-10-06T21:03:24Z"
+  "pushed": "2025-10-06T21:03:24Z",
+  "q_files_raw": 492
  },
  {
   "repo": "SpencerFX/q-Quiz",
   "dir": "SpencerFX__q-Quiz",
   "sha": "59f712a28842c2c7e9326b73479c8cdedb859ceb",
-  "q_files": 457,
+  "q_files": 295,
   "stars": 0,
   "license": "apache-2.0",
-  "pushed": "2026-08-28T08:47:01Z"
- },
- {
-  "repo": "Piohrun/resq",
-  "dir": "Piohrun__resq",
-  "sha": "073722c10ab31135ec4d3780625e84ae441a8c1a",
-  "q_files": 260,
-  "stars": 0,
-  "license": "mit",
-  "pushed": "2026-10-19T05:16:07Z"
+  "pushed": "2026-08-28T08:47:01Z",
+  "q_files_raw": 457
  },
  {
   "repo": "gyorokpeter/puzzle_solutions",
@@ -42,43 +26,38 @@
   "q_files": 222,
   "stars": 7,
   "license": "",
-  "pushed": "2026-09-13T21:18:19Z"
+  "pushed": "2026-09-13T21:18:19Z",
+  "q_files_raw": 222
  },
  {
   "repo": "DataIntellectTech/TorQ",
   "dir": "DataIntellectTech__TorQ",
   "sha": "4be4fc3457bf1a838e976ff2e9892b2babe8c1c3",
-  "q_files": 214,
+  "q_files": 200,
   "stars": 310,
   "license": "mit",
-  "pushed": "2026-10-14T07:49:27Z"
+  "pushed": "2026-10-14T07:49:27Z",
+  "q_files_raw": 214
  },
  {
   "repo": "KxSystems/ml",
   "dir": "KxSystems__ml",
   "sha": "5509fa6cfc454c68bf3441672fe1a26cb5a19088",
-  "q_files": 193,
+  "q_files": 192,
   "stars": 66,
   "license": "apache-2.0",
-  "pushed": "2024-12-24T00:57:09Z"
- },
- {
-  "repo": "adotsch/aoc",
-  "dir": "adotsch__aoc",
-  "sha": "5c7eb11354508c49ca3f26212714a0437f20e8f7",
-  "q_files": 191,
-  "stars": 17,
-  "license": "",
-  "pushed": "2026-04-29T16:19:21Z"
+  "pushed": "2024-12-24T00:57:09Z",
+  "q_files_raw": 193
  },
  {
   "repo": "pequeniajugar/AQueryKDB",
   "dir": "pequeniajugar__AQueryKDB",
   "sha": "6abb7aaec283acb3902ba4fb21adfe0106e7ea97",
-  "q_files": 188,
+  "q_files": 185,
   "stars": 0,
   "license": "",
-  "pushed": "2026-10-07T14:08:44Z"
+  "pushed": "2026-10-07T14:08:44Z",
+  "q_files_raw": 188
  },
  {
   "repo": "mkst/aoc",
@@ -87,79 +66,88 @@
   "q_files": 181,
   "stars": 14,
   "license": "",
-  "pushed": "2025-12-12T17:10:28Z"
+  "pushed": "2025-12-12T17:10:28Z",
+  "q_files_raw": 181
+ },
+ {
+  "repo": "adotsch/aoc",
+  "dir": "adotsch__aoc",
+  "sha": "5c7eb11354508c49ca3f26212714a0437f20e8f7",
+  "q_files": 178,
+  "stars": 17,
+  "license": "",
+  "pushed": "2026-04-29T16:19:21Z",
+  "q_files_raw": 191
+ },
+ {
+  "repo": "Piohrun/resq",
+  "dir": "Piohrun__resq",
+  "sha": "073722c10ab31135ec4d3780625e84ae441a8c1a",
+  "q_files": 173,
+  "stars": 0,
+  "license": "mit",
+  "pushed": "2026-10-19T05:16:07Z",
+  "q_files_raw": 260
  },
  {
   "repo": "DataIntellectTech/kdbx-modules",
   "dir": "DataIntellectTech__kdbx-modules",
   "sha": "48e978d649e04944dc2866ad2d5fe2674a62ed93",
-  "q_files": 131,
+  "q_files": 126,
   "stars": 10,
   "license": "mit",
-  "pushed": "2026-10-29T13:25:43Z"
- },
- {
-  "repo": "SpencerFX/q-desc",
-  "dir": "SpencerFX__q-desc",
-  "sha": "99e7d0a700cbe6b39680ce46aa43d78f43b8c3cb",
-  "q_files": 113,
-  "stars": 2,
-  "license": "mit",
-  "pushed": "2026-08-19T14:15:16Z"
+  "pushed": "2026-10-29T13:25:43Z",
+  "q_files_raw": 131
  },
  {
   "repo": "kimtang/btick",
   "dir": "kimtang__btick",
   "sha": "25ad00b2b14bc666924a9b3b65e13a9292cb05d4",
-  "q_files": 109,
+  "q_files": 100,
   "stars": 8,
   "license": "gpl-3.0",
-  "pushed": "2023-06-24T10:56:02Z"
- },
- {
-  "repo": "SpencerFX/HackerRankQ",
-  "dir": "SpencerFX__HackerRankQ",
-  "sha": "40a4fe7a071794c6557ee4bf9b8d3aa8b29d88bc",
-  "q_files": 108,
-  "stars": 0,
-  "license": "mit",
-  "pushed": "2026-04-30T02:27:58Z"
+  "pushed": "2023-06-24T10:56:02Z",
+  "q_files_raw": 109
  },
  {
   "repo": "SpencerFX/openQ",
   "dir": "SpencerFX__openQ",
   "sha": "06c5fc21df15d14cd341b044e6abf7b94f317192",
-  "q_files": 98,
+  "q_files": 97,
   "stars": 0,
   "license": "apache-2.0",
-  "pushed": "2026-09-12T08:00:14Z"
+  "pushed": "2026-09-12T08:00:14Z",
+  "q_files_raw": 98
+ },
+ {
+  "repo": "SpencerFX/q-desc",
+  "dir": "SpencerFX__q-desc",
+  "sha": "99e7d0a700cbe6b39680ce46aa43d78f43b8c3cb",
+  "q_files": 95,
+  "stars": 2,
+  "license": "mit",
+  "pushed": "2026-08-19T14:15:16Z",
+  "q_files_raw": 113
  },
  {
   "repo": "KxSystems/automl",
   "dir": "KxSystems__automl",
   "sha": "f9e39ec791c67c7308bad0fe3e410a85cfccf0b8",
-  "q_files": 89,
+  "q_files": 88,
   "stars": 27,
   "license": "apache-2.0",
-  "pushed": "2024-10-10T16:03:05Z"
+  "pushed": "2024-10-10T16:03:05Z",
+  "q_files_raw": 89
  },
  {
   "repo": "hanssmail/quantQ",
   "dir": "hanssmail__quantQ",
   "sha": "8139d103356c8d2419c020e61c002a28c564bbf4",
-  "q_files": 88,
+  "q_files": 83,
   "stars": 101,
   "license": "gpl-3.0",
-  "pushed": "2026-10-29T06:22:12Z"
- },
- {
-  "repo": "better-4/Better4",
-  "dir": "better-4__Better4",
-  "sha": "7a816ed7b0447ca86129eeaebb47bf4f3732bc85",
-  "q_files": 81,
-  "stars": 20,
-  "license": "mit",
-  "pushed": "2026-10-29T16:42:48Z"
+  "pushed": "2026-10-29T06:22:12Z",
+  "q_files_raw": 88
  },
  {
   "repo": "jsogarro/medusa",
@@ -168,97 +156,78 @@
   "q_files": 77,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-04-06T01:56:07Z"
- },
- {
-  "repo": "DEIS-Tools/uppaal-models",
-  "dir": "DEIS-Tools__uppaal-models",
-  "sha": "34c3adbce940bdd0bbd26e98b0bbf144c9f080ac",
-  "q_files": 75,
-  "stars": 12,
-  "license": "",
-  "pushed": "2026-10-15T15:03:47Z"
+  "pushed": "2026-04-06T01:56:07Z",
+  "q_files_raw": 77
  },
  {
   "repo": "belowzeroff/qbase",
   "dir": "belowzeroff__qbase",
   "sha": "b5109ce89bd75688e65ce47e1861c1be3cce52e5",
-  "q_files": 75,
+  "q_files": 74,
   "stars": 0,
   "license": "apache-2.0",
-  "pushed": "2026-10-21T10:51:11Z"
+  "pushed": "2026-10-21T10:51:11Z",
+  "q_files_raw": 75
  },
  {
   "repo": "psaris/funq",
   "dir": "psaris__funq",
   "sha": "9c95cc27bbdcd977fa0fe498efb0a331e4a5b581",
-  "q_files": 73,
+  "q_files": 67,
   "stars": 143,
   "license": "mit",
-  "pushed": "2026-05-17T16:02:16Z"
- },
- {
-  "repo": "nsneverhax/guitar-hero-3-deluxe",
-  "dir": "nsneverhax__guitar-hero-3-deluxe",
-  "sha": "150287d1dce66737544d4f33a27dff64fcfba57d",
-  "q_files": 65,
-  "stars": 114,
-  "license": "",
-  "pushed": "2026-10-03T07:32:59Z"
+  "pushed": "2026-05-17T16:02:16Z",
+  "q_files_raw": 73
  },
  {
   "repo": "caolanraff/q-sino",
   "dir": "caolanraff__q-sino",
   "sha": "d7e1ee7b733d72c97ca3322d10588b1b09b77a52",
-  "q_files": 61,
+  "q_files": 60,
   "stars": 3,
   "license": "mit",
-  "pushed": "2026-10-10T09:43:22Z"
+  "pushed": "2026-10-10T09:43:22Z",
+  "q_files_raw": 61
  },
  {
-  "repo": "nandanito/array-thinking-to-q",
-  "dir": "nandanito__array-thinking-to-q",
-  "sha": "fbb7537daa3fe28d7a6865fd30ce07056de9425d",
-  "q_files": 53,
-  "stars": 1,
-  "license": "apache-2.0",
-  "pushed": "2026-10-21T10:13:56Z"
+  "repo": "SpencerFX/HackerRankQ",
+  "dir": "SpencerFX__HackerRankQ",
+  "sha": "40a4fe7a071794c6557ee4bf9b8d3aa8b29d88bc",
+  "q_files": 54,
+  "stars": 0,
+  "license": "mit",
+  "pushed": "2026-04-30T02:27:58Z",
+  "q_files_raw": 108
  },
  {
   "repo": "jonathonmcmurray/kdbslack",
   "dir": "jonathonmcmurray__kdbslack",
   "sha": "eb9d844625e7a169c34e527d732bedb67538744c",
-  "q_files": 51,
+  "q_files": 48,
   "stars": 13,
   "license": "mit",
-  "pushed": "2022-11-11T12:05:02Z"
+  "pushed": "2022-11-11T12:05:02Z",
+  "q_files_raw": 51
  },
  {
   "repo": "KxSystems/kdb",
   "dir": "KxSystems__kdb",
   "sha": "1daebf73349199b1318649fc2c5656cab2b4a7f2",
-  "q_files": 46,
+  "q_files": 45,
   "stars": 474,
   "license": "apache-2.0",
-  "pushed": "2026-10-11T19:31:02Z"
+  "pushed": "2026-10-11T19:31:02Z",
+  "q_files_raw": 46
  },
  {
   "repo": "moazim1993/Kdb-ML-Big-Data-Notes",
   "dir": "moazim1993__Kdb-ML-Big-Data-Notes",
   "sha": "e295127d046ac14d26ed03003003fa9199564d04",
-  "q_files": 44,
+  "q_files": 41,
   "stars": 3,
   "license": "",
-  "pushed": "2022-03-05T01:09:42Z"
- },
- {
-  "repo": "finos/kdb",
-  "dir": "finos__kdb",
-  "sha": "e54032a57fd4d9c1288ef4807f2c9f7c22d1c290",
-  "q_files": 42,
-  "stars": 54,
-  "license": "apache-2.0",
-  "pushed": "2026-08-10T13:37:29Z"
+  "pushed": "2022-03-05T01:09:42Z",
+  "q_files_raw": 44
  },
  {
   "repo": "DataIntellectTech/TorQ-Virtual-Tables",
@@ -267,25 +236,8 @@
   "q_files": 41,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-26T07:17:32Z"
- },
- {
-  "repo": "KxSystems/pykx",
-  "dir": "KxSystems__pykx",
-  "sha": "321319e814dca591a29fcf3f0efd270a9f6e116d",
-  "q_files": 39,
-  "stars": 80,
-  "license": "other",
-  "pushed": "2026-10-29T11:59:11Z"
- },
- {
-  "repo": "amwpts/kdb-sleeper",
-  "dir": "amwpts__kdb-sleeper",
-  "sha": "7a59147016e235b2a71278e3468750e5a62f0e4d",
-  "q_files": 38,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-09-13T14:57:24Z"
+  "pushed": "2026-10-26T07:17:32Z",
+  "q_files_raw": 41
  },
  {
   "repo": "KxSystems/kdbx-tick-reference-architecture",
@@ -294,25 +246,8 @@
   "q_files": 38,
   "stars": 4,
   "license": "",
-  "pushed": "2026-10-14T19:29:33Z"
- },
- {
-  "repo": "qbists/studyq",
-  "dir": "qbists__studyq",
-  "sha": "efe1da1a9c31044580c573f59e9f669d5a646e67",
-  "q_files": 37,
-  "stars": 136,
-  "license": "cc0-1.0",
-  "pushed": "2023-02-05T22:26:07Z"
- },
- {
-  "repo": "adavies42/qist",
-  "dir": "adavies42__qist",
-  "sha": "580e7f17d56c6509dbdc77d4717a1e28dbd7129f",
-  "q_files": 37,
-  "stars": 20,
-  "license": "",
-  "pushed": "2024-04-19T19:16:39Z"
+  "pushed": "2026-10-14T19:29:33Z",
+  "q_files_raw": 38
  },
  {
   "repo": "KxSystems/aimeta",
@@ -321,34 +256,58 @@
   "q_files": 37,
   "stars": 1,
   "license": "apache-2.0",
-  "pushed": "2026-08-17T14:32:30Z"
+  "pushed": "2026-08-17T14:32:30Z",
+  "q_files_raw": 37
  },
  {
-  "repo": "FregRB/NS-GH-Permadeath",
-  "dir": "FregRB__NS-GH-Permadeath",
-  "sha": "aef21a471ba76fc406d501b4ee1321ad7568952c",
-  "q_files": 35,
-  "stars": 12,
+  "repo": "KxSystems/pykx",
+  "dir": "KxSystems__pykx",
+  "sha": "321319e814dca591a29fcf3f0efd270a9f6e116d",
+  "q_files": 36,
+  "stars": 80,
+  "license": "other",
+  "pushed": "2026-10-29T11:59:11Z",
+  "q_files_raw": 39
+ },
+ {
+  "repo": "qbists/studyq",
+  "dir": "qbists__studyq",
+  "sha": "efe1da1a9c31044580c573f59e9f669d5a646e67",
+  "q_files": 36,
+  "stars": 136,
+  "license": "cc0-1.0",
+  "pushed": "2023-02-05T22:26:07Z",
+  "q_files_raw": 37
+ },
+ {
+  "repo": "adavies42/qist",
+  "dir": "adavies42__qist",
+  "sha": "580e7f17d56c6509dbdc77d4717a1e28dbd7129f",
+  "q_files": 36,
+  "stars": 20,
   "license": "",
-  "pushed": "2025-03-21T16:45:07Z"
+  "pushed": "2024-04-19T19:16:39Z",
+  "q_files_raw": 37
+ },
+ {
+  "repo": "amwpts/kdb-sleeper",
+  "dir": "amwpts__kdb-sleeper",
+  "sha": "7a59147016e235b2a71278e3468750e5a62f0e4d",
+  "q_files": 32,
+  "stars": 0,
+  "license": "",
+  "pushed": "2026-09-13T14:57:24Z",
+  "q_files_raw": 38
  },
  {
   "repo": "agoodquant/qr",
   "dir": "agoodquant__qr",
   "sha": "d85fe72cdf6475e168b3221adb9b883dff9d6737",
-  "q_files": 35,
+  "q_files": 31,
   "stars": 7,
   "license": "mit",
-  "pushed": "2021-08-26T03:36:15Z"
- },
- {
-  "repo": "nugend/qspec",
-  "dir": "nugend__qspec",
-  "sha": "9b846b68a8d808e472ba504d18c325b14b468087",
-  "q_files": 32,
-  "stars": 34,
-  "license": "mit",
-  "pushed": "2023-01-30T15:28:14Z"
+  "pushed": "2021-08-26T03:36:15Z",
+  "q_files_raw": 35
  },
  {
   "repo": "BuaBook/kdb-common",
@@ -357,7 +316,8 @@
   "q_files": 31,
   "stars": 54,
   "license": "apache-2.0",
-  "pushed": "2026-06-13T17:59:24Z"
+  "pushed": "2026-06-13T17:59:24Z",
+  "q_files_raw": 31
  },
  {
   "repo": "peachq-org/peachq",
@@ -366,16 +326,18 @@
   "q_files": 31,
   "stars": 66,
   "license": "mit",
-  "pushed": "2026-10-26T20:03:28Z"
+  "pushed": "2026-10-26T20:03:28Z",
+  "q_files_raw": 31
  },
  {
   "repo": "matthieu-briche/fi-algo",
   "dir": "matthieu-briche__fi-algo",
   "sha": "0c6ca01b7cbfe806c289e6fe6e50b3b25693abf1",
-  "q_files": 31,
+  "q_files": 30,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-29T13:35:41Z"
+  "pushed": "2026-10-29T13:35:41Z",
+  "q_files_raw": 31
  },
  {
   "repo": "0xDiesis/diesis-q",
@@ -384,43 +346,38 @@
   "q_files": 29,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-09T21:47:21Z"
+  "pushed": "2026-10-09T21:47:21Z",
+  "q_files_raw": 29
+ },
+ {
+  "repo": "finos/kdb",
+  "dir": "finos__kdb",
+  "sha": "e54032a57fd4d9c1288ef4807f2c9f7c22d1c290",
+  "q_files": 28,
+  "stars": 54,
+  "license": "apache-2.0",
+  "pushed": "2026-08-10T13:37:29Z",
+  "q_files_raw": 42
  },
  {
   "repo": "cathald903/kdb",
   "dir": "cathald903__kdb",
   "sha": "eb51480159f0fd67225f1b5d8e1f86d85a0fb514",
-  "q_files": 29,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-04-01T14:24:43Z"
- },
- {
-  "repo": "quintanar401/q2c",
-  "dir": "quintanar401__q2c",
-  "sha": "8d95724f5387b50a82674b660bbf4750f4a11a26",
-  "q_files": 28,
-  "stars": 25,
-  "license": "",
-  "pushed": "2025-02-06T07:38:47Z"
- },
- {
-  "repo": "jsogarro/avlm-q",
-  "dir": "jsogarro__avlm-q",
-  "sha": "fa60e9c31d973a8960c5131fefeb3a009a28250f",
   "q_files": 28,
   "stars": 0,
-  "license": "mit",
-  "pushed": "2026-04-06T15:29:47Z"
+  "license": "",
+  "pushed": "2026-04-01T14:24:43Z",
+  "q_files_raw": 29
  },
  {
-  "repo": "samarthsoni17/qkiln",
-  "dir": "samarthsoni17__qkiln",
-  "sha": "261a87ea6a7d6db037d5120bb28d33524898ee8c",
+  "repo": "nandanito/array-thinking-to-q",
+  "dir": "nandanito__array-thinking-to-q",
+  "sha": "fbb7537daa3fe28d7a6865fd30ce07056de9425d",
   "q_files": 27,
-  "stars": 0,
-  "license": "",
-  "pushed": "2025-12-15T09:27:54Z"
+  "stars": 1,
+  "license": "apache-2.0",
+  "pushed": "2026-10-21T10:13:56Z",
+  "q_files_raw": 53
  },
  {
   "repo": "DataIntellectTech/TorQ-Finance-Starter-Pack",
@@ -429,25 +386,38 @@
   "q_files": 24,
   "stars": 70,
   "license": "mit",
-  "pushed": "2026-07-15T09:06:29Z"
+  "pushed": "2026-07-15T09:06:29Z",
+  "q_files_raw": 24
+ },
+ {
+  "repo": "quintanar401/q2c",
+  "dir": "quintanar401__q2c",
+  "sha": "8d95724f5387b50a82674b660bbf4750f4a11a26",
+  "q_files": 23,
+  "stars": 25,
+  "license": "",
+  "pushed": "2025-02-06T07:38:47Z",
+  "q_files_raw": 28
+ },
+ {
+  "repo": "samarthsoni17/qkiln",
+  "dir": "samarthsoni17__qkiln",
+  "sha": "261a87ea6a7d6db037d5120bb28d33524898ee8c",
+  "q_files": 23,
+  "stars": 0,
+  "license": "",
+  "pushed": "2025-12-15T09:27:54Z",
+  "q_files_raw": 27
  },
  {
   "repo": "KxSystems/cookbook",
   "dir": "KxSystems__cookbook",
   "sha": "7f083085205d784c9eacf0c7a1841d66dbb58531",
-  "q_files": 24,
+  "q_files": 23,
   "stars": 87,
   "license": "",
-  "pushed": "2024-08-13T14:22:33Z"
- },
- {
-  "repo": "jsogarro/qstats",
-  "dir": "jsogarro__qstats",
-  "sha": "d2f24f10735288b30fe1d712e8f9079e09efe428",
-  "q_files": 24,
-  "stars": 0,
-  "license": "mit",
-  "pushed": "2026-06-09T10:35:21Z"
+  "pushed": "2024-08-13T14:22:33Z",
+  "q_files_raw": 24
  },
  {
   "repo": "DataIntellectTech/TorQ-Crypto",
@@ -456,7 +426,18 @@
   "q_files": 23,
   "stars": 9,
   "license": "mit",
-  "pushed": "2026-04-09T14:35:35Z"
+  "pushed": "2026-04-09T14:35:35Z",
+  "q_files_raw": 23
+ },
+ {
+  "repo": "nugend/qspec",
+  "dir": "nugend__qspec",
+  "sha": "9b846b68a8d808e472ba504d18c325b14b468087",
+  "q_files": 22,
+  "stars": 34,
+  "license": "mit",
+  "pushed": "2023-01-30T15:28:14Z",
+  "q_files_raw": 32
  },
  {
   "repo": "sandybradley/qMonitor",
@@ -465,16 +446,8 @@
   "q_files": 22,
   "stars": 12,
   "license": "mit",
-  "pushed": "2019-10-14T13:46:27Z"
- },
- {
-  "repo": "aa1024/learnQ",
-  "dir": "aa1024__learnQ",
-  "sha": "aa108f1eef01695cac98af4c9b37711078425d16",
-  "q_files": 22,
-  "stars": 11,
-  "license": "",
-  "pushed": "2018-11-27T20:39:03Z"
+  "pushed": "2019-10-14T13:46:27Z",
+  "q_files_raw": 22
  },
  {
   "repo": "rahulved/kdb",
@@ -483,34 +456,28 @@
   "q_files": 22,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-05-05T06:19:07Z"
+  "pushed": "2026-05-05T06:19:07Z",
+  "q_files_raw": 22
  },
  {
-  "repo": "michael-g/mgkdb",
-  "dir": "michael-g__mgkdb",
-  "sha": "2667bceea6b2f996192714ae3653155b5c66e670",
-  "q_files": 22,
-  "stars": 4,
-  "license": "",
-  "pushed": "2026-07-04T21:47:49Z"
- },
- {
-  "repo": "a2ndrade/q-intellij-plugin",
-  "dir": "a2ndrade__q-intellij-plugin",
-  "sha": "78e4c91e6fcfa01f73aeaf5fcf91beadb967b8ea",
+  "repo": "jsogarro/avlm-q",
+  "dir": "jsogarro__avlm-q",
+  "sha": "fa60e9c31d973a8960c5131fefeb3a009a28250f",
   "q_files": 21,
-  "stars": 22,
-  "license": "other",
-  "pushed": "2021-04-15T14:46:24Z"
- },
- {
-  "repo": "UtsavParashar/ktick",
-  "dir": "UtsavParashar__ktick",
-  "sha": "d848489df3fe4e7f783b53361fee0f7f1d6c692b",
-  "q_files": 21,
-  "stars": 1,
+  "stars": 0,
   "license": "mit",
-  "pushed": "2025-07-13T16:55:58Z"
+  "pushed": "2026-04-06T15:29:47Z",
+  "q_files_raw": 28
+ },
+ {
+  "repo": "jsogarro/qstats",
+  "dir": "jsogarro__qstats",
+  "sha": "d2f24f10735288b30fe1d712e8f9079e09efe428",
+  "q_files": 21,
+  "stars": 0,
+  "license": "mit",
+  "pushed": "2026-06-09T10:35:21Z",
+  "q_files_raw": 24
  },
  {
   "repo": "jwbuitenhuis/q-chess",
@@ -519,34 +486,18 @@
   "q_files": 21,
   "stars": 4,
   "license": "",
-  "pushed": "2017-10-29T18:00:44Z"
+  "pushed": "2017-10-29T18:00:44Z",
+  "q_files_raw": 21
  },
  {
-  "repo": "jonathonmcmurray/reQ",
-  "dir": "jonathonmcmurray__reQ",
-  "sha": "6728dd50ed767ffb8818940a51579d4abc8c01d9",
+  "repo": "UtsavParashar/ktick",
+  "dir": "UtsavParashar__ktick",
+  "sha": "d848489df3fe4e7f783b53361fee0f7f1d6c692b",
   "q_files": 20,
-  "stars": 39,
+  "stars": 1,
   "license": "mit",
-  "pushed": "2023-04-13T14:02:38Z"
- },
- {
-  "repo": "anton-dovzhenko/advent-of-code",
-  "dir": "anton-dovzhenko__advent-of-code",
-  "sha": "0164f2df824573a6207639843e0bb21ec95cd0b3",
-  "q_files": 20,
-  "stars": 12,
-  "license": "",
-  "pushed": "2024-12-02T13:30:54Z"
- },
- {
-  "repo": "ajhxia/UNI",
-  "dir": "ajhxia__UNI",
-  "sha": "4c731b5d973f179fa0e427e9a17450032e17faf2",
-  "q_files": 20,
-  "stars": 9,
-  "license": "",
-  "pushed": "2026-07-27T14:27:30Z"
+  "pushed": "2025-07-13T16:55:58Z",
+  "q_files_raw": 21
  },
  {
   "repo": "SpencerFX/polyQ",
@@ -555,25 +506,8 @@
   "q_files": 20,
   "stars": 1,
   "license": "other",
-  "pushed": "2026-10-14T15:07:11Z"
- },
- {
-  "repo": "McSqwurd/tick_adv",
-  "dir": "McSqwurd__tick_adv",
-  "sha": "9f906e521b9f69dc7866fe737e259ee752e1e372",
-  "q_files": 20,
-  "stars": 1,
-  "license": "",
-  "pushed": "2026-03-04T17:45:03Z"
- },
- {
-  "repo": "calvin639/advancedKdb",
-  "dir": "calvin639__advancedKdb",
-  "sha": "3153382f99487e51dcd6b97f86e8feedf7c4118f",
-  "q_files": 20,
-  "stars": 0,
-  "license": "",
-  "pushed": "2020-10-20T05:49:24Z"
+  "pushed": "2026-10-14T15:07:11Z",
+  "q_files_raw": 20
  },
  {
   "repo": "smabie/q-advent-of-code2019",
@@ -582,25 +516,28 @@
   "q_files": 20,
   "stars": 1,
   "license": "",
-  "pushed": "2020-04-22T03:26:37Z"
+  "pushed": "2020-04-22T03:26:37Z",
+  "q_files_raw": 20
  },
  {
-  "repo": "picoDoc/betfair-data-capture",
-  "dir": "picoDoc__betfair-data-capture",
-  "sha": "479ac40df7543e30700005210749895c3ce7d268",
+  "repo": "McSqwurd/tick_adv",
+  "dir": "McSqwurd__tick_adv",
+  "sha": "9f906e521b9f69dc7866fe737e259ee752e1e372",
   "q_files": 19,
-  "stars": 19,
-  "license": "mit",
-  "pushed": "2019-04-13T15:45:14Z"
- },
- {
-  "repo": "krish240574/embedPyMLAI",
-  "dir": "krish240574__embedPyMLAI",
-  "sha": "d2c9baa915b5499eb1d74ef9f6ea95eb80bde05b",
-  "q_files": 19,
-  "stars": 6,
+  "stars": 1,
   "license": "",
-  "pushed": "2022-03-28T13:55:12Z"
+  "pushed": "2026-03-04T17:45:03Z",
+  "q_files_raw": 20
+ },
+ {
+  "repo": "calvin639/advancedKdb",
+  "dir": "calvin639__advancedKdb",
+  "sha": "3153382f99487e51dcd6b97f86e8feedf7c4118f",
+  "q_files": 19,
+  "stars": 0,
+  "license": "",
+  "pushed": "2020-10-20T05:49:24Z",
+  "q_files_raw": 20
  },
  {
   "repo": "vinall/kdb",
@@ -609,7 +546,28 @@
   "q_files": 19,
   "stars": 0,
   "license": "",
-  "pushed": "2026-02-27T20:16:56Z"
+  "pushed": "2026-02-27T20:16:56Z",
+  "q_files_raw": 19
+ },
+ {
+  "repo": "jonathonmcmurray/reQ",
+  "dir": "jonathonmcmurray__reQ",
+  "sha": "6728dd50ed767ffb8818940a51579d4abc8c01d9",
+  "q_files": 18,
+  "stars": 39,
+  "license": "mit",
+  "pushed": "2023-04-13T14:02:38Z",
+  "q_files_raw": 20
+ },
+ {
+  "repo": "krish240574/embedPyMLAI",
+  "dir": "krish240574__embedPyMLAI",
+  "sha": "d2c9baa915b5499eb1d74ef9f6ea95eb80bde05b",
+  "q_files": 18,
+  "stars": 6,
+  "license": "",
+  "pushed": "2022-03-28T13:55:12Z",
+  "q_files_raw": 19
  },
  {
   "repo": "poetiq/poetiq",
@@ -618,16 +576,8 @@
   "q_files": 18,
   "stars": 37,
   "license": "",
-  "pushed": "2018-06-16T21:24:12Z"
- },
- {
-  "repo": "kiranthakur-dataengineer/KDB_Q_Learning",
-  "dir": "kiranthakur-dataengineer__KDB_Q_Learning",
-  "sha": "edb0f4b5eda95d14312b0e7f104bf693a6d27880",
-  "q_files": 18,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-10-13T06:08:49Z"
+  "pushed": "2018-06-16T21:24:12Z",
+  "q_files_raw": 18
  },
  {
   "repo": "KxSystems/kx-auth",
@@ -636,7 +586,8 @@
   "q_files": 18,
   "stars": 0,
   "license": "apache-2.0",
-  "pushed": "2026-10-01T17:58:20Z"
+  "pushed": "2026-10-01T17:58:20Z",
+  "q_files_raw": 18
  },
  {
   "repo": "786980206/kdbx-modules",
@@ -645,7 +596,28 @@
   "q_files": 18,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-07-17T02:44:43Z"
+  "pushed": "2026-07-17T02:44:43Z",
+  "q_files_raw": 18
+ },
+ {
+  "repo": "michael-g/mgkdb",
+  "dir": "michael-g__mgkdb",
+  "sha": "2667bceea6b2f996192714ae3653155b5c66e670",
+  "q_files": 17,
+  "stars": 4,
+  "license": "",
+  "pushed": "2026-07-04T21:47:49Z",
+  "q_files_raw": 22
+ },
+ {
+  "repo": "picoDoc/betfair-data-capture",
+  "dir": "picoDoc__betfair-data-capture",
+  "sha": "479ac40df7543e30700005210749895c3ce7d268",
+  "q_files": 17,
+  "stars": 19,
+  "license": "mit",
+  "pushed": "2019-04-13T15:45:14Z",
+  "q_files_raw": 19
  },
  {
   "repo": "KxSystems/nano",
@@ -654,16 +626,8 @@
   "q_files": 16,
   "stars": 17,
   "license": "apache-2.0",
-  "pushed": "2025-11-24T11:28:15Z"
- },
- {
-  "repo": "UtsavParashar/kdbNotes",
-  "dir": "UtsavParashar__kdbNotes",
-  "sha": "c9d1e47e56e8b51d935baf6c1d80cc5358c15fef",
-  "q_files": 16,
-  "stars": 0,
-  "license": "",
-  "pushed": "2025-07-13T16:00:05Z"
+  "pushed": "2025-11-24T11:28:15Z",
+  "q_files_raw": 16
  },
  {
   "repo": "unseen2004/kdb-quant-platform",
@@ -672,7 +636,8 @@
   "q_files": 16,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-23T13:42:44Z"
+  "pushed": "2026-10-23T13:42:44Z",
+  "q_files_raw": 16
  },
  {
   "repo": "savanawanti/Equities-Trade-Pipeline-KDB-",
@@ -681,16 +646,28 @@
   "q_files": 16,
   "stars": 1,
   "license": "",
-  "pushed": "2026-09-27T23:11:46Z"
+  "pushed": "2026-09-27T23:11:46Z",
+  "q_files_raw": 16
+ },
+ {
+  "repo": "kiranthakur-dataengineer/KDB_Q_Learning",
+  "dir": "kiranthakur-dataengineer__KDB_Q_Learning",
+  "sha": "edb0f4b5eda95d14312b0e7f104bf693a6d27880",
+  "q_files": 15,
+  "stars": 0,
+  "license": "",
+  "pushed": "2026-10-13T06:08:49Z",
+  "q_files_raw": 18
  },
  {
   "repo": "arithmax-research/achest",
   "dir": "arithmax-research__achest",
   "sha": "e6dd0dade402442c8c86e97783c18b9a7420cb1a",
-  "q_files": 16,
+  "q_files": 15,
   "stars": 1,
   "license": "mit",
-  "pushed": "2026-10-09T13:11:24Z"
+  "pushed": "2026-10-09T13:11:24Z",
+  "q_files_raw": 16
  },
  {
   "repo": "matthieu-briche/kdb-hawkes-quote-simulator",
@@ -699,7 +676,8 @@
   "q_files": 15,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-25T19:29:55Z"
+  "pushed": "2026-10-25T19:29:55Z",
+  "q_files_raw": 15
  },
  {
   "repo": "nyierr/adventofcode",
@@ -708,16 +686,8 @@
   "q_files": 15,
   "stars": 3,
   "license": "gpl-3.0",
-  "pushed": "2020-06-14T16:43:05Z"
- },
- {
-  "repo": "chankeypathak/kdb",
-  "dir": "chankeypathak__kdb",
-  "sha": "b09b83e3895b23b03daebd92965b6cc006f37d0b",
-  "q_files": 15,
-  "stars": 0,
-  "license": "",
-  "pushed": "2025-05-27T07:02:32Z"
+  "pushed": "2020-06-14T16:43:05Z",
+  "q_files_raw": 15
  },
  {
   "repo": "DionysiosB/QSnippets",
@@ -726,7 +696,28 @@
   "q_files": 15,
   "stars": 2,
   "license": "mit",
-  "pushed": "2025-01-04T15:22:23Z"
+  "pushed": "2025-01-04T15:22:23Z",
+  "q_files_raw": 15
+ },
+ {
+  "repo": "a2ndrade/q-intellij-plugin",
+  "dir": "a2ndrade__q-intellij-plugin",
+  "sha": "78e4c91e6fcfa01f73aeaf5fcf91beadb967b8ea",
+  "q_files": 14,
+  "stars": 22,
+  "license": "other",
+  "pushed": "2021-04-15T14:46:24Z",
+  "q_files_raw": 21
+ },
+ {
+  "repo": "chankeypathak/kdb",
+  "dir": "chankeypathak__kdb",
+  "sha": "b09b83e3895b23b03daebd92965b6cc006f37d0b",
+  "q_files": 14,
+  "stars": 0,
+  "license": "",
+  "pushed": "2025-05-27T07:02:32Z",
+  "q_files_raw": 15
  },
  {
   "repo": "KxSystems/protobufkdb",
@@ -735,7 +726,8 @@
   "q_files": 14,
   "stars": 14,
   "license": "apache-2.0",
-  "pushed": "2026-10-20T10:10:29Z"
+  "pushed": "2026-10-20T10:10:29Z",
+  "q_files_raw": 14
  },
  {
   "repo": "caezium/kdb-q-challenges",
@@ -744,34 +736,38 @@
   "q_files": 14,
   "stars": 3,
   "license": "mit",
-  "pushed": "2026-06-12T14:54:38Z"
+  "pushed": "2026-06-12T14:54:38Z",
+  "q_files_raw": 14
+ },
+ {
+  "repo": "aa1024/learnQ",
+  "dir": "aa1024__learnQ",
+  "sha": "aa108f1eef01695cac98af4c9b37711078425d16",
+  "q_files": 13,
+  "stars": 11,
+  "license": "",
+  "pushed": "2018-11-27T20:39:03Z",
+  "q_files_raw": 22
+ },
+ {
+  "repo": "UtsavParashar/kdbNotes",
+  "dir": "UtsavParashar__kdbNotes",
+  "sha": "c9d1e47e56e8b51d935baf6c1d80cc5358c15fef",
+  "q_files": 13,
+  "stars": 0,
+  "license": "",
+  "pushed": "2025-07-13T16:00:05Z",
+  "q_files_raw": 16
  },
  {
   "repo": "senthilts9/kdb-q-notes",
   "dir": "senthilts9__kdb-q-notes",
   "sha": "2be6c4a54805b122297a6b147e81064824808854",
-  "q_files": 14,
+  "q_files": 13,
   "stars": 1,
   "license": "mit",
-  "pushed": "2026-07-20T04:25:25Z"
- },
- {
-  "repo": "kenwjj/qmigrate",
-  "dir": "kenwjj__qmigrate",
-  "sha": "42bc0d66a081fcf1b0c95af1379a1ecf4dcafb91",
-  "q_files": 14,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-06-01T10:37:36Z"
- },
- {
-  "repo": "chanjam03/AoC_kdb",
-  "dir": "chanjam03__AoC_kdb",
-  "sha": "71ef1d211598df6c6b6a84dc2ac01415580c27f5",
-  "q_files": 14,
-  "stars": 0,
-  "license": "mit",
-  "pushed": "2026-03-20T19:31:13Z"
+  "pushed": "2026-07-20T04:25:25Z",
+  "q_files_raw": 14
  },
  {
   "repo": "psaris/qtips",
@@ -780,25 +776,8 @@
   "q_files": 13,
   "stars": 156,
   "license": "mit",
-  "pushed": "2026-10-24T17:37:15Z"
- },
- {
-  "repo": "DataIntellectTech/TorQ-CME",
-  "dir": "DataIntellectTech__TorQ-CME",
-  "sha": "4d5f3484368cc55e16b970b3cb252a1eae38c905",
-  "q_files": 13,
-  "stars": 16,
-  "license": "",
-  "pushed": "2019-09-29T01:05:24Z"
- },
- {
-  "repo": "KxSystems/jupyterq",
-  "dir": "KxSystems__jupyterq",
-  "sha": "1cc895e674be17d8a9992c0bb128508120a34825",
-  "q_files": 13,
-  "stars": 114,
-  "license": "apache-2.0",
-  "pushed": "2025-04-04T15:19:55Z"
+  "pushed": "2026-10-24T17:37:15Z",
+  "q_files_raw": 13
  },
  {
   "repo": "KxSystems/solace",
@@ -807,7 +786,8 @@
   "q_files": 13,
   "stars": 12,
   "license": "apache-2.0",
-  "pushed": "2026-03-23T10:18:23Z"
+  "pushed": "2026-03-23T10:18:23Z",
+  "q_files_raw": 13
  },
  {
   "repo": "fshi7418/kdb-local",
@@ -816,16 +796,48 @@
   "q_files": 13,
   "stars": 0,
   "license": "",
-  "pushed": "2026-10-23T01:06:47Z"
+  "pushed": "2026-10-23T01:06:47Z",
+  "q_files_raw": 13
+ },
+ {
+  "repo": "chanjam03/AoC_kdb",
+  "dir": "chanjam03__AoC_kdb",
+  "sha": "71ef1d211598df6c6b6a84dc2ac01415580c27f5",
+  "q_files": 12,
+  "stars": 0,
+  "license": "mit",
+  "pushed": "2026-03-20T19:31:13Z",
+  "q_files_raw": 14
+ },
+ {
+  "repo": "DataIntellectTech/TorQ-CME",
+  "dir": "DataIntellectTech__TorQ-CME",
+  "sha": "4d5f3484368cc55e16b970b3cb252a1eae38c905",
+  "q_files": 12,
+  "stars": 16,
+  "license": "",
+  "pushed": "2019-09-29T01:05:24Z",
+  "q_files_raw": 13
+ },
+ {
+  "repo": "KxSystems/jupyterq",
+  "dir": "KxSystems__jupyterq",
+  "sha": "1cc895e674be17d8a9992c0bb128508120a34825",
+  "q_files": 12,
+  "stars": 114,
+  "license": "apache-2.0",
+  "pushed": "2025-04-04T15:19:55Z",
+  "q_files_raw": 13
  },
  {
   "repo": "uasif13/interview",
   "dir": "uasif13__interview",
   "sha": "b8ccdec987b599681b664c3ad1e382e54e8b6318",
-  "q_files": 13,
+  "q_files": 12,
   "stars": 0,
   "license": "",
-  "pushed": "2025-10-21T23:58:00Z"
+  "pushed": "2025-10-21T23:58:00Z",
+  "q_files_raw": 13
  },
  {
   "repo": "kdbcn/kdb",
@@ -834,7 +846,8 @@
   "q_files": 12,
   "stars": 12,
   "license": "mit",
-  "pushed": "2020-09-13T05:10:20Z"
+  "pushed": "2020-09-13T05:10:20Z",
+  "q_files_raw": 12
  },
  {
   "repo": "KxSystems/docs",
@@ -843,7 +856,8 @@
   "q_files": 12,
   "stars": 78,
   "license": "cc-by-4.0",
-  "pushed": "2026-10-28T12:54:19Z"
+  "pushed": "2026-10-28T12:54:19Z",
+  "q_files_raw": 12
  },
  {
   "repo": "KxSystems/arrowkdb",
@@ -852,7 +866,8 @@
   "q_files": 12,
   "stars": 33,
   "license": "apache-2.0",
-  "pushed": "2026-10-19T14:19:56Z"
+  "pushed": "2026-10-19T14:19:56Z",
+  "q_files_raw": 12
  },
  {
   "repo": "ilanivek/kdb_backtester",
@@ -861,7 +876,8 @@
   "q_files": 12,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-24T04:06:54Z"
+  "pushed": "2026-08-24T04:06:54Z",
+  "q_files_raw": 12
  },
  {
   "repo": "Senthilvadivel-20/kdb-tick",
@@ -870,16 +886,8 @@
   "q_files": 12,
   "stars": 0,
   "license": "",
-  "pushed": "2026-07-08T06:16:06Z"
- },
- {
-  "repo": "ssshahani/KDB-Trading-Analytics",
-  "dir": "ssshahani__KDB-Trading-Analytics",
-  "sha": "3f86a5df3838955c839acc97a44c4adc9aa14e22",
-  "q_files": 12,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-03-18T23:18:17Z"
+  "pushed": "2026-07-08T06:16:06Z",
+  "q_files_raw": 12
  },
  {
   "repo": "jackgrebenc/Instrument_Pricer",
@@ -888,34 +896,38 @@
   "q_files": 12,
   "stars": 0,
   "license": "gpl-3.0",
-  "pushed": "2024-06-20T19:13:24Z"
+  "pushed": "2024-06-20T19:13:24Z",
+  "q_files_raw": 12
+ },
+ {
+  "repo": "anton-dovzhenko/advent-of-code",
+  "dir": "anton-dovzhenko__advent-of-code",
+  "sha": "0164f2df824573a6207639843e0bb21ec95cd0b3",
+  "q_files": 11,
+  "stars": 12,
+  "license": "",
+  "pushed": "2024-12-02T13:30:54Z",
+  "q_files_raw": 20
+ },
+ {
+  "repo": "ssshahani/KDB-Trading-Analytics",
+  "dir": "ssshahani__KDB-Trading-Analytics",
+  "sha": "3f86a5df3838955c839acc97a44c4adc9aa14e22",
+  "q_files": 11,
+  "stars": 0,
+  "license": "",
+  "pushed": "2026-03-18T23:18:17Z",
+  "q_files_raw": 12
  },
  {
   "repo": "asatirahul/qaws",
   "dir": "asatirahul__qaws",
   "sha": "5853129b2be90c62d9eb6f2bceddaf275a783457",
-  "q_files": 12,
+  "q_files": 11,
   "stars": 3,
   "license": "mit",
-  "pushed": "2018-11-07T11:06:08Z"
- },
- {
-  "repo": "ontop/ontop-tutorial",
-  "dir": "ontop__ontop-tutorial",
-  "sha": "ad90423cce80616e8df7459aabacf8b8a30cc61c",
-  "q_files": 11,
-  "stars": 11,
-  "license": "",
-  "pushed": "2023-04-21T10:47:29Z"
- },
- {
-  "repo": "aa1024/sphinxQ",
-  "dir": "aa1024__sphinxQ",
-  "sha": "f654a3eb464265d622a5ca0b5339eaa3cefaa4d1",
-  "q_files": 11,
-  "stars": 7,
-  "license": "bsd-3-clause",
-  "pushed": "2018-08-18T22:58:43Z"
+  "pushed": "2018-11-07T11:06:08Z",
+  "q_files_raw": 12
  },
  {
   "repo": "picoDoc/AIuler",
@@ -924,7 +936,8 @@
   "q_files": 11,
   "stars": 1,
   "license": "",
-  "pushed": "2026-02-09T12:47:34Z"
+  "pushed": "2026-02-09T12:47:34Z",
+  "q_files_raw": 11
  },
  {
   "repo": "Thaufeki/tickLLM",
@@ -933,7 +946,8 @@
   "q_files": 11,
   "stars": 0,
   "license": "",
-  "pushed": "2026-01-14T17:36:36Z"
+  "pushed": "2026-01-14T17:36:36Z",
+  "q_files_raw": 11
  },
  {
   "repo": "MartinKMwai/kdb-Exercises",
@@ -942,7 +956,8 @@
   "q_files": 11,
   "stars": 0,
   "license": "",
-  "pushed": "2025-12-07T13:57:43Z"
+  "pushed": "2025-12-07T13:57:43Z",
+  "q_files_raw": 11
  },
  {
   "repo": "nikhouri/aiskdb",
@@ -951,7 +966,8 @@
   "q_files": 11,
   "stars": 0,
   "license": "",
-  "pushed": "2025-07-10T00:56:42Z"
+  "pushed": "2025-07-10T00:56:42Z",
+  "q_files_raw": 11
  },
  {
   "repo": "rianoc/partitioning",
@@ -960,16 +976,18 @@
   "q_files": 11,
   "stars": 3,
   "license": "",
-  "pushed": "2025-01-14T14:25:08Z"
+  "pushed": "2025-01-14T14:25:08Z",
+  "q_files_raw": 11
  },
  {
-  "repo": "Vansh-Solanki/KDB",
-  "dir": "Vansh-Solanki__KDB",
-  "sha": "5673af88ddcec282672e135043d606d6587c511b",
-  "q_files": 11,
+  "repo": "kenwjj/qmigrate",
+  "dir": "kenwjj__qmigrate",
+  "sha": "42bc0d66a081fcf1b0c95af1379a1ecf4dcafb91",
+  "q_files": 10,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-16T20:47:52Z"
+  "pushed": "2026-06-01T10:37:36Z",
+  "q_files_raw": 14
  },
  {
   "repo": "KxSystems/nlp",
@@ -978,7 +996,8 @@
   "q_files": 10,
   "stars": 18,
   "license": "apache-2.0",
-  "pushed": "2024-10-10T16:04:35Z"
+  "pushed": "2024-10-10T16:04:35Z",
+  "q_files_raw": 10
  },
  {
   "repo": "awilson-kx/nlp",
@@ -987,7 +1006,8 @@
   "q_files": 10,
   "stars": 8,
   "license": "apache-2.0",
-  "pushed": "2018-06-06T10:57:55Z"
+  "pushed": "2018-06-06T10:57:55Z",
+  "q_files_raw": 10
  },
  {
   "repo": "skeptiqos/qsl",
@@ -996,7 +1016,8 @@
   "q_files": 10,
   "stars": 7,
   "license": "mit",
-  "pushed": "2026-04-04T07:04:37Z"
+  "pushed": "2026-04-04T07:04:37Z",
+  "q_files_raw": 10
  },
  {
   "repo": "KxSystems/hdf5",
@@ -1005,7 +1026,8 @@
   "q_files": 10,
   "stars": 14,
   "license": "apache-2.0",
-  "pushed": "2026-04-01T10:40:56Z"
+  "pushed": "2026-04-01T10:40:56Z",
+  "q_files_raw": 10
  },
  {
   "repo": "pmcnamee99-10/advanced-kdb-tick-arch",
@@ -1014,7 +1036,8 @@
   "q_files": 10,
   "stars": 0,
   "license": "",
-  "pushed": "2026-03-03T16:08:01Z"
+  "pushed": "2026-03-03T16:08:01Z",
+  "q_files_raw": 10
  },
  {
   "repo": "a-keshav/tick-store-kdb",
@@ -1023,7 +1046,8 @@
   "q_files": 10,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-04-23T04:03:47Z"
+  "pushed": "2026-04-23T04:03:47Z",
+  "q_files_raw": 10
  },
  {
   "repo": "adotsch/q-libs",
@@ -1032,7 +1056,8 @@
   "q_files": 10,
   "stars": 2,
   "license": "",
-  "pushed": "2020-10-18T21:24:13Z"
+  "pushed": "2020-10-18T21:24:13Z",
+  "q_files_raw": 10
  },
  {
   "repo": "jlas/ml.q",
@@ -1041,7 +1066,8 @@
   "q_files": 9,
   "stars": 31,
   "license": "mit",
-  "pushed": "2018-11-07T07:07:29Z"
+  "pushed": "2018-11-07T07:07:29Z",
+  "q_files_raw": 9
  },
  {
   "repo": "KxSystems/kdb-architecture-course",
@@ -1050,7 +1076,8 @@
   "q_files": 9,
   "stars": 13,
   "license": "",
-  "pushed": "2026-05-28T14:23:33Z"
+  "pushed": "2026-05-28T14:23:33Z",
+  "q_files_raw": 9
  },
  {
   "repo": "KxSystems/kafka",
@@ -1059,7 +1086,8 @@
   "q_files": 9,
   "stars": 55,
   "license": "apache-2.0",
-  "pushed": "2026-10-20T09:36:24Z"
+  "pushed": "2026-10-20T09:36:24Z",
+  "q_files_raw": 9
  },
  {
   "repo": "AIM-IT4/KDB-Market-Microstructure-Study---Billion-Quote-Analysis",
@@ -1068,7 +1096,8 @@
   "q_files": 9,
   "stars": 0,
   "license": "",
-  "pushed": "2026-02-05T05:19:21Z"
+  "pushed": "2026-02-05T05:19:21Z",
+  "q_files_raw": 9
  },
  {
   "repo": "KxSystems/unit-test",
@@ -1077,7 +1106,8 @@
   "q_files": 9,
   "stars": 1,
   "license": "apache-2.0",
-  "pushed": "2026-10-29T17:04:23Z"
+  "pushed": "2026-10-29T17:04:23Z",
+  "q_files_raw": 9
  },
  {
   "repo": "fallondeclan/Technical-Indicators",
@@ -1086,16 +1116,38 @@
   "q_files": 9,
   "stars": 0,
   "license": "",
-  "pushed": "2025-10-29T15:49:43Z"
+  "pushed": "2025-10-29T15:49:43Z",
+  "q_files_raw": 9
+ },
+ {
+  "repo": "aa1024/sphinxQ",
+  "dir": "aa1024__sphinxQ",
+  "sha": "f654a3eb464265d622a5ca0b5339eaa3cefaa4d1",
+  "q_files": 8,
+  "stars": 7,
+  "license": "bsd-3-clause",
+  "pushed": "2018-08-18T22:58:43Z",
+  "q_files_raw": 11
+ },
+ {
+  "repo": "Vansh-Solanki/KDB",
+  "dir": "Vansh-Solanki__KDB",
+  "sha": "5673af88ddcec282672e135043d606d6587c511b",
+  "q_files": 8,
+  "stars": 0,
+  "license": "",
+  "pushed": "2026-08-16T20:47:52Z",
+  "q_files_raw": 11
  },
  {
   "repo": "stevewirts/kdb-vnc",
   "dir": "stevewirts__kdb-vnc",
   "sha": "f0f6b2a7f7e1e66f999b6c8fa95db1e456bf0f05",
-  "q_files": 9,
+  "q_files": 8,
   "stars": 6,
   "license": "",
-  "pushed": "2019-10-24T11:52:47Z"
+  "pushed": "2019-10-24T11:52:47Z",
+  "q_files_raw": 9
  },
  {
   "repo": "sambacha/q-evm",
@@ -1104,25 +1156,8 @@
   "q_files": 8,
   "stars": 419,
   "license": "other",
-  "pushed": "2022-09-15T22:47:07Z"
- },
- {
-  "repo": "microsoft/QBASHER",
-  "dir": "microsoft__QBASHER",
-  "sha": "6908ce3c0a3c7216db78ace90538c52f72e62587",
-  "q_files": 8,
-  "stars": 35,
-  "license": "other",
-  "pushed": "2023-06-12T20:26:47Z"
- },
- {
-  "repo": "jonathonmcmurray/ws.q",
-  "dir": "jonathonmcmurray__ws.q",
-  "sha": "639d1ae5c0a2c1cc0b6f731f291d7b95024f644e",
-  "q_files": 8,
-  "stars": 33,
-  "license": "mit",
-  "pushed": "2021-08-25T15:37:04Z"
+  "pushed": "2022-09-15T22:47:07Z",
+  "q_files_raw": 8
  },
  {
   "repo": "bradleyboyuyang/FTEC5530-Algo-Trading",
@@ -1131,7 +1166,8 @@
   "q_files": 8,
   "stars": 23,
   "license": "",
-  "pushed": "2022-07-19T01:48:01Z"
+  "pushed": "2022-07-19T01:48:01Z",
+  "q_files_raw": 8
  },
  {
   "repo": "chuchunf/qex",
@@ -1140,7 +1176,8 @@
   "q_files": 8,
   "stars": 11,
   "license": "",
-  "pushed": "2026-03-20T10:52:10Z"
+  "pushed": "2026-03-20T10:52:10Z",
+  "q_files_raw": 8
  },
  {
   "repo": "FlyingOE/q_Wind",
@@ -1149,7 +1186,8 @@
   "q_files": 8,
   "stars": 93,
   "license": "apache-2.0",
-  "pushed": "2022-10-21T06:37:52Z"
+  "pushed": "2022-10-21T06:37:52Z",
+  "q_files_raw": 8
  },
  {
   "repo": "kxcontrib/space-weather",
@@ -1158,7 +1196,8 @@
   "q_files": 8,
   "stars": 6,
   "license": "",
-  "pushed": "2019-08-09T20:19:10Z"
+  "pushed": "2019-08-09T20:19:10Z",
+  "q_files_raw": 8
  },
  {
   "repo": "matthieu-briche/kdb-realtime-tick-dashboard",
@@ -1167,25 +1206,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-27T14:31:01Z"
- },
- {
-  "repo": "seanpm2001/Learn-q",
-  "dir": "seanpm2001__Learn-q",
-  "sha": "5b3be8aaa210669fe5082baae970b51324b1bf78",
-  "q_files": 8,
-  "stars": 2,
-  "license": "gpl-3.0",
-  "pushed": "2022-09-02T01:10:43Z"
- },
- {
-  "repo": "seanpm2001/SNU_2D_ProgrammingTools_IDE_q",
-  "dir": "seanpm2001__SNU_2D_ProgrammingTools_IDE_q",
-  "sha": "ef308b8dc7a7baec08a645567b1d69c929b2c7c5",
-  "q_files": 8,
-  "stars": 2,
-  "license": "gpl-3.0",
-  "pushed": "2022-09-02T01:19:35Z"
+  "pushed": "2026-10-27T14:31:01Z",
+  "q_files_raw": 8
  },
  {
   "repo": "kasim-du/kdb-journey",
@@ -1194,7 +1216,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-08T14:15:55Z"
+  "pushed": "2026-08-08T14:15:55Z",
+  "q_files_raw": 8
  },
  {
   "repo": "submartingle/orderbook-sim-q",
@@ -1203,16 +1226,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-04T12:04:35Z"
- },
- {
-  "repo": "hrj8055/market-engine-tick-architecture",
-  "dir": "hrj8055__market-engine-tick-architecture",
-  "sha": "7d355ce9a505278df8643843482111ea39e5ee90",
-  "q_files": 8,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-07-16T21:43:46Z"
+  "pushed": "2026-08-04T12:04:35Z",
+  "q_files_raw": 8
  },
  {
   "repo": "BonucciAndrea/kdb-hft-tickerplant",
@@ -1221,7 +1236,8 @@
   "q_files": 8,
   "stars": 2,
   "license": "gpl-3.0",
-  "pushed": "2026-05-08T15:20:02Z"
+  "pushed": "2026-05-08T15:20:02Z",
+  "q_files_raw": 8
  },
  {
   "repo": "SpencerFX/eulerQ",
@@ -1230,7 +1246,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-04-22T01:08:47Z"
+  "pushed": "2026-04-22T01:08:47Z",
+  "q_files_raw": 8
  },
  {
   "repo": "bleunguts/KDB",
@@ -1239,7 +1256,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "",
-  "pushed": "2026-03-22T14:50:51Z"
+  "pushed": "2026-03-22T14:50:51Z",
+  "q_files_raw": 8
  },
  {
   "repo": "submartingle/tickerplant-q",
@@ -1248,7 +1266,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-05T11:09:25Z"
+  "pushed": "2026-08-05T11:09:25Z",
+  "q_files_raw": 8
  },
  {
   "repo": "NamannBhan/KDB-FeedLab",
@@ -1257,7 +1276,8 @@
   "q_files": 8,
   "stars": 0,
   "license": "",
-  "pushed": "2026-07-26T18:21:21Z"
+  "pushed": "2026-07-26T18:21:21Z",
+  "q_files_raw": 8
  },
  {
   "repo": "zhangjiahao/my-match",
@@ -1266,7 +1286,8 @@
   "q_files": 8,
   "stars": 1,
   "license": "",
-  "pushed": "2018-11-08T17:45:04Z"
+  "pushed": "2018-11-08T17:45:04Z",
+  "q_files_raw": 8
  },
  {
   "repo": "nicholasferguson/kdb.q.SABR.Nelder.Mead",
@@ -1275,7 +1296,18 @@
   "q_files": 8,
   "stars": 1,
   "license": "",
-  "pushed": "2019-09-18T11:30:13Z"
+  "pushed": "2019-09-18T11:30:13Z",
+  "q_files_raw": 8
+ },
+ {
+  "repo": "hrj8055/market-engine-tick-architecture",
+  "dir": "hrj8055__market-engine-tick-architecture",
+  "sha": "7d355ce9a505278df8643843482111ea39e5ee90",
+  "q_files": 7,
+  "stars": 0,
+  "license": "",
+  "pushed": "2026-07-16T21:43:46Z",
+  "q_files_raw": 8
  },
  {
   "repo": "crollila/kdb-monte-carlo-option-pricer",
@@ -1284,7 +1316,8 @@
   "q_files": 7,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-08-13T06:12:29Z"
+  "pushed": "2026-08-13T06:12:29Z",
+  "q_files_raw": 7
  },
  {
   "repo": "Gregory-GG/tick-vol-screen-q",
@@ -1293,7 +1326,8 @@
   "q_files": 7,
   "stars": 0,
   "license": "",
-  "pushed": "2026-09-26T11:51:29Z"
+  "pushed": "2026-09-26T11:51:29Z",
+  "q_files_raw": 7
  },
  {
   "repo": "an21p/physicsq",
@@ -1302,7 +1336,8 @@
   "q_files": 7,
   "stars": 1,
   "license": "",
-  "pushed": "2025-02-02T23:01:20Z"
+  "pushed": "2025-02-02T23:01:20Z",
+  "q_files_raw": 7
  },
  {
   "repo": "gokulr/realtime_tick_capture",
@@ -1311,7 +1346,8 @@
   "q_files": 7,
   "stars": 5,
   "license": "",
-  "pushed": "2016-01-07T13:05:43Z"
+  "pushed": "2016-01-07T13:05:43Z",
+  "q_files_raw": 7
  },
  {
   "repo": "kimtang/behaviourTag",
@@ -1320,52 +1356,18 @@
   "q_files": 7,
   "stars": 1,
   "license": "apache-2.0",
-  "pushed": "2020-07-22T14:11:31Z"
+  "pushed": "2020-07-22T14:11:31Z",
+  "q_files_raw": 7
  },
  {
   "repo": "fabpotato/dockerizedQ",
   "dir": "fabpotato__dockerizedQ",
   "sha": "28efa0a11e3ae43fe44a111f13fa57dafa92232e",
-  "q_files": 7,
+  "q_files": 6,
   "stars": 1,
   "license": "",
-  "pushed": "2020-08-23T10:52:26Z"
- },
- {
-  "repo": "KxSystems/analyst-training",
-  "dir": "KxSystems__analyst-training",
-  "sha": "75b12d885a3d1da11cfac0326e4ef920517ca9df",
-  "q_files": 6,
-  "stars": 25,
-  "license": "",
-  "pushed": "2020-10-13T15:41:54Z"
- },
- {
-  "repo": "BonucciAndrea/amber",
-  "dir": "BonucciAndrea__amber",
-  "sha": "46fccc2b07139049f2f658a3b590d2104a328344",
-  "q_files": 6,
-  "stars": 41,
-  "license": "agpl-3.0",
-  "pushed": "2026-10-28T12:52:35Z"
- },
- {
-  "repo": "seanpm2001/AI2001_Category-Source_Code-SC-Q",
-  "dir": "seanpm2001__AI2001_Category-Source_Code-SC-Q",
-  "sha": "ea9d6e2da7aa0f5e71b15ec168da5890fb9c0b80",
-  "q_files": 6,
-  "stars": 2,
-  "license": "gpl-3.0",
-  "pushed": "2023-06-28T06:34:52Z"
- },
- {
-  "repo": "seanpm2001/qqqqqqqqqqqqqqqqqqqq",
-  "dir": "seanpm2001__qqqqqqqqqqqqqqqqqqqq",
-  "sha": "fe4a18825874a312e835f4144d0aa530c3fc2127",
-  "q_files": 6,
-  "stars": 2,
-  "license": "gpl-3.0",
-  "pushed": "2023-03-20T03:48:20Z"
+  "pushed": "2020-08-23T10:52:26Z",
+  "q_files_raw": 7
  },
  {
   "repo": "SpencerFX/leetcodeQ",
@@ -1374,16 +1376,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-08-11T06:04:13Z"
- },
- {
-  "repo": "amanjogiris/assessment",
-  "dir": "amanjogiris__assessment",
-  "sha": "6b72ac7cf331d600e1d98d8103e14b03dea529c4",
-  "q_files": 6,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-05-13T19:09:52Z"
+  "pushed": "2026-08-11T06:04:13Z",
+  "q_files_raw": 6
  },
  {
   "repo": "113clark/hdbMemorySaver",
@@ -1392,7 +1386,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2025-11-11T21:59:18Z"
+  "pushed": "2025-11-11T21:59:18Z",
+  "q_files_raw": 6
  },
  {
   "repo": "sprholst/AOC-2024",
@@ -1401,7 +1396,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2024-12-30T15:19:10Z"
+  "pushed": "2024-12-30T15:19:10Z",
+  "q_files_raw": 6
  },
  {
   "repo": "vinall/kdbOneTP",
@@ -1410,7 +1406,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2026-09-21T17:26:10Z"
+  "pushed": "2026-09-21T17:26:10Z",
+  "q_files_raw": 6
  },
  {
   "repo": "MorrisStranger/kdbtickai",
@@ -1419,7 +1416,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2026-04-17T00:31:29Z"
+  "pushed": "2026-04-17T00:31:29Z",
+  "q_files_raw": 6
  },
  {
   "repo": "amitkolgaonkar/KDB-Algo-Development",
@@ -1428,7 +1426,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2025-12-24T05:24:28Z"
+  "pushed": "2025-12-24T05:24:28Z",
+  "q_files_raw": 6
  },
  {
   "repo": "MarekDudek/tickerplant-demo",
@@ -1437,7 +1436,8 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2021-03-21T19:26:26Z"
+  "pushed": "2021-03-21T19:26:26Z",
+  "q_files_raw": 6
  },
  {
   "repo": "jackdoesjava/kdb-tick-research",
@@ -1446,7 +1446,38 @@
   "q_files": 6,
   "stars": 0,
   "license": "",
-  "pushed": "2026-09-24T17:22:08Z"
+  "pushed": "2026-09-24T17:22:08Z",
+  "q_files_raw": 6
+ },
+ {
+  "repo": "jonathonmcmurray/ws.q",
+  "dir": "jonathonmcmurray__ws.q",
+  "sha": "639d1ae5c0a2c1cc0b6f731f291d7b95024f644e",
+  "q_files": 5,
+  "stars": 33,
+  "license": "mit",
+  "pushed": "2021-08-25T15:37:04Z",
+  "q_files_raw": 8
+ },
+ {
+  "repo": "KxSystems/analyst-training",
+  "dir": "KxSystems__analyst-training",
+  "sha": "75b12d885a3d1da11cfac0326e4ef920517ca9df",
+  "q_files": 5,
+  "stars": 25,
+  "license": "",
+  "pushed": "2020-10-13T15:41:54Z",
+  "q_files_raw": 6
+ },
+ {
+  "repo": "BonucciAndrea/amber",
+  "dir": "BonucciAndrea__amber",
+  "sha": "46fccc2b07139049f2f658a3b590d2104a328344",
+  "q_files": 5,
+  "stars": 41,
+  "license": "agpl-3.0",
+  "pushed": "2026-10-28T12:52:35Z",
+  "q_files_raw": 6
  },
  {
   "repo": "sandybradley/qMachineTrader",
@@ -1455,7 +1486,8 @@
   "q_files": 5,
   "stars": 20,
   "license": "mit",
-  "pushed": "2020-01-20T08:40:22Z"
+  "pushed": "2020-01-20T08:40:22Z",
+  "q_files_raw": 5
  },
  {
   "repo": "simongarland/tick",
@@ -1464,7 +1496,8 @@
   "q_files": 5,
   "stars": 15,
   "license": "",
-  "pushed": "2024-08-18T20:31:10Z"
+  "pushed": "2024-08-18T20:31:10Z",
+  "q_files_raw": 5
  },
  {
   "repo": "samkennerly/q_practice",
@@ -1473,25 +1506,8 @@
   "q_files": 5,
   "stars": 11,
   "license": "bsd-2-clause",
-  "pushed": "2020-01-21T02:04:46Z"
- },
- {
-  "repo": "danielkrizian/qlearn",
-  "dir": "danielkrizian__qlearn",
-  "sha": "e12bfeb3d4302ce80aa94f81fdeee68c9d3acc56",
-  "q_files": 5,
-  "stars": 10,
-  "license": "",
-  "pushed": "2020-12-19T18:34:44Z"
- },
- {
-  "repo": "KxSystems/pyq",
-  "dir": "KxSystems__pyq",
-  "sha": "1afc8641809c5bbbc0f78d260b9fbca14e75b504",
-  "q_files": 5,
-  "stars": 203,
-  "license": "apache-2.0",
-  "pushed": "2024-12-04T13:27:57Z"
+  "pushed": "2020-01-21T02:04:46Z",
+  "q_files_raw": 5
  },
  {
   "repo": "KxSystems/embedPy",
@@ -1500,7 +1516,8 @@
   "q_files": 5,
   "stars": 96,
   "license": "apache-2.0",
-  "pushed": "2025-10-09T13:06:06Z"
+  "pushed": "2025-10-09T13:06:06Z",
+  "q_files_raw": 5
  },
  {
   "repo": "KxSystems/ffi",
@@ -1509,7 +1526,8 @@
   "q_files": 5,
   "stars": 33,
   "license": "apache-2.0",
-  "pushed": "2026-05-01T16:06:02Z"
+  "pushed": "2026-05-01T16:06:02Z",
+  "q_files_raw": 5
  },
  {
   "repo": "matthieu-briche/kdb-execution-quality-tca",
@@ -1518,7 +1536,8 @@
   "q_files": 5,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-10-25T19:29:53Z"
+  "pushed": "2026-10-25T19:29:53Z",
+  "q_files_raw": 5
  },
  {
   "repo": "hrj8055/kdb-trade-surveillance",
@@ -1527,7 +1546,8 @@
   "q_files": 5,
   "stars": 0,
   "license": "",
-  "pushed": "2026-10-28T22:26:36Z"
+  "pushed": "2026-10-28T22:26:36Z",
+  "q_files_raw": 5
  },
  {
   "repo": "FlyingOE/simplex.q",
@@ -1536,7 +1556,8 @@
   "q_files": 5,
   "stars": 2,
   "license": "gpl-3.0",
-  "pushed": "2019-09-26T10:17:14Z"
+  "pushed": "2019-09-26T10:17:14Z",
+  "q_files_raw": 5
  },
  {
   "repo": "SaeedBohlooli/kdb_ticker_plant",
@@ -1545,7 +1566,8 @@
   "q_files": 5,
   "stars": 1,
   "license": "",
-  "pushed": "2026-10-25T20:18:38Z"
+  "pushed": "2026-10-25T20:18:38Z",
+  "q_files_raw": 5
  },
  {
   "repo": "UtsavParashar/kdb_q_utilities",
@@ -1554,7 +1576,8 @@
   "q_files": 5,
   "stars": 2,
   "license": "apache-2.0",
-  "pushed": "2025-04-13T14:51:19Z"
+  "pushed": "2025-04-13T14:51:19Z",
+  "q_files_raw": 5
  },
  {
   "repo": "pmcnamee99-10/kdb-q-interprocess-communication-",
@@ -1563,7 +1586,8 @@
   "q_files": 5,
   "stars": 0,
   "license": "",
-  "pushed": "2026-02-17T14:54:30Z"
+  "pushed": "2026-02-17T14:54:30Z",
+  "q_files_raw": 5
  },
  {
   "repo": "zakoud/mlq",
@@ -1572,7 +1596,8 @@
   "q_files": 5,
   "stars": 7,
   "license": "",
-  "pushed": "2015-09-11T08:31:13Z"
+  "pushed": "2015-09-11T08:31:13Z",
+  "q_files_raw": 5
  },
  {
   "repo": "conorheffron/kdb-tick",
@@ -1581,16 +1606,28 @@
   "q_files": 5,
   "stars": 1,
   "license": "mit",
-  "pushed": "2024-07-28T03:13:21Z"
+  "pushed": "2024-07-28T03:13:21Z",
+  "q_files_raw": 5
  },
  {
-  "repo": "jbrussell/MATnoise",
-  "dir": "jbrussell__MATnoise",
-  "sha": "d998bbe5e5a006bcef313ff7a1dbdad422db0816",
+  "repo": "amanjogiris/assessment",
+  "dir": "amanjogiris__assessment",
+  "sha": "6b72ac7cf331d600e1d98d8103e14b03dea529c4",
   "q_files": 4,
-  "stars": 41,
+  "stars": 0,
   "license": "",
-  "pushed": "2026-09-03T21:34:19Z"
+  "pushed": "2026-05-13T19:09:52Z",
+  "q_files_raw": 6
+ },
+ {
+  "repo": "KxSystems/pyq",
+  "dir": "KxSystems__pyq",
+  "sha": "1afc8641809c5bbbc0f78d260b9fbca14e75b504",
+  "q_files": 4,
+  "stars": 203,
+  "license": "apache-2.0",
+  "pushed": "2024-12-04T13:27:57Z",
+  "q_files_raw": 5
  },
  {
   "repo": "asatirahul/cryptoq",
@@ -1599,16 +1636,8 @@
   "q_files": 4,
   "stars": 21,
   "license": "mit",
-  "pushed": "2018-06-21T16:02:02Z"
- },
- {
-  "repo": "jasraj/q-doc",
-  "dir": "jasraj__q-doc",
-  "sha": "70dec703d559349d0e1b69f2bc8ab08b00f5fd50",
-  "q_files": 4,
-  "stars": 18,
-  "license": "bsd-3-clause",
-  "pushed": "2018-11-14T12:14:42Z"
+  "pushed": "2018-06-21T16:02:02Z",
+  "q_files_raw": 4
  },
  {
   "repo": "robmoore-i/JsonRestApi",
@@ -1617,7 +1646,8 @@
   "q_files": 4,
   "stars": 10,
   "license": "",
-  "pushed": "2022-08-09T15:16:51Z"
+  "pushed": "2022-08-09T15:16:51Z",
+  "q_files_raw": 4
  },
  {
   "repo": "sandybradley/qSignals",
@@ -1626,16 +1656,8 @@
   "q_files": 4,
   "stars": 10,
   "license": "mit",
-  "pushed": "2019-10-14T13:48:32Z"
- },
- {
-  "repo": "aa1024/strQ",
-  "dir": "aa1024__strQ",
-  "sha": "7fa050ffaf385477bc16e946c6ec8ca7955833d7",
-  "q_files": 4,
-  "stars": 10,
-  "license": "mit",
-  "pushed": "2018-08-17T22:39:22Z"
+  "pushed": "2019-10-14T13:48:32Z",
+  "q_files_raw": 4
  },
  {
   "repo": "KxSystems/embedR",
@@ -1644,16 +1666,8 @@
   "q_files": 4,
   "stars": 13,
   "license": "apache-2.0",
-  "pushed": "2026-05-07T09:24:16Z"
- },
- {
-  "repo": "nyierr/q-99",
-  "dir": "nyierr__q-99",
-  "sha": "f67af9f9cd5385b48f7093c0d091725590a6e143",
-  "q_files": 4,
-  "stars": 0,
-  "license": "gpl-3.0",
-  "pushed": "2020-05-27T19:47:06Z"
+  "pushed": "2026-05-07T09:24:16Z",
+  "q_files_raw": 4
  },
  {
   "repo": "caolanraff/q-utils",
@@ -1662,7 +1676,8 @@
   "q_files": 4,
   "stars": 0,
   "license": "",
-  "pushed": "2026-10-14T11:13:43Z"
+  "pushed": "2026-10-14T11:13:43Z",
+  "q_files_raw": 4
  },
  {
   "repo": "ivae99/kdbq",
@@ -1671,7 +1686,8 @@
   "q_files": 4,
   "stars": 0,
   "license": "",
-  "pushed": "2025-11-27T10:38:42Z"
+  "pushed": "2025-11-27T10:38:42Z",
+  "q_files_raw": 4
  },
  {
   "repo": "Vansh-Solanki/KDB-Orderbook-project",
@@ -1680,7 +1696,8 @@
   "q_files": 4,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-18T03:00:12Z"
+  "pushed": "2026-08-18T03:00:12Z",
+  "q_files_raw": 4
  },
  {
   "repo": "yasamanbeigpoor/kdb-system-monitor",
@@ -1689,7 +1706,8 @@
   "q_files": 4,
   "stars": 0,
   "license": "",
-  "pushed": "2026-06-01T05:04:58Z"
+  "pushed": "2026-06-01T05:04:58Z",
+  "q_files_raw": 4
  },
  {
   "repo": "shivjethwa-collab/ShivTickerplant",
@@ -1698,7 +1716,8 @@
   "q_files": 4,
   "stars": 0,
   "license": "",
-  "pushed": "2026-09-10T17:30:11Z"
+  "pushed": "2026-09-10T17:30:11Z",
+  "q_files_raw": 4
  },
  {
   "repo": "kimtang/ql.q",
@@ -1707,7 +1726,8 @@
   "q_files": 4,
   "stars": 19,
   "license": "",
-  "pushed": "2014-10-22T12:27:38Z"
+  "pushed": "2014-10-22T12:27:38Z",
+  "q_files_raw": 4
  },
  {
   "repo": "secwang/qftx",
@@ -1716,7 +1736,8 @@
   "q_files": 4,
   "stars": 4,
   "license": "",
-  "pushed": "2021-02-20T00:49:24Z"
+  "pushed": "2021-02-20T00:49:24Z",
+  "q_files_raw": 4
  },
  {
   "repo": "drzwz/qhuobi",
@@ -1725,25 +1746,38 @@
   "q_files": 4,
   "stars": 2,
   "license": "",
-  "pushed": "2019-06-02T05:41:05Z"
+  "pushed": "2019-06-02T05:41:05Z",
+  "q_files_raw": 4
  },
  {
-  "repo": "mortensorensen/projecteuler",
-  "dir": "mortensorensen__projecteuler",
-  "sha": "47288c3e798833f7664d970fe7385574d991a8e1",
-  "q_files": 4,
-  "stars": 1,
+  "repo": "danielkrizian/qlearn",
+  "dir": "danielkrizian__qlearn",
+  "sha": "e12bfeb3d4302ce80aa94f81fdeee68c9d3acc56",
+  "q_files": 3,
+  "stars": 10,
   "license": "",
-  "pushed": "2016-08-01T13:04:44Z"
+  "pushed": "2020-12-19T18:34:44Z",
+  "q_files_raw": 5
  },
  {
-  "repo": "konradbachusz-zz/KDB-q-notes",
-  "dir": "konradbachusz-zz__KDB-q-notes",
-  "sha": "9ee8fcc21e3c3e1b12c121336281265ecf948e0c",
-  "q_files": 4,
-  "stars": 1,
-  "license": "",
-  "pushed": "2021-03-21T21:46:01Z"
+  "repo": "jasraj/q-doc",
+  "dir": "jasraj__q-doc",
+  "sha": "70dec703d559349d0e1b69f2bc8ab08b00f5fd50",
+  "q_files": 3,
+  "stars": 18,
+  "license": "bsd-3-clause",
+  "pushed": "2018-11-14T12:14:42Z",
+  "q_files_raw": 4
+ },
+ {
+  "repo": "aa1024/strQ",
+  "dir": "aa1024__strQ",
+  "sha": "7fa050ffaf385477bc16e946c6ec8ca7955833d7",
+  "q_files": 3,
+  "stars": 10,
+  "license": "mit",
+  "pushed": "2018-08-17T22:39:22Z",
+  "q_files_raw": 4
  },
  {
   "repo": "KxSystems/kdb-tick",
@@ -1752,7 +1786,8 @@
   "q_files": 3,
   "stars": 107,
   "license": "",
-  "pushed": "2024-08-13T12:19:11Z"
+  "pushed": "2024-08-13T12:19:11Z",
+  "q_files_raw": 3
  },
  {
   "repo": "psaris/q4q",
@@ -1761,16 +1796,8 @@
   "q_files": 3,
   "stars": 34,
   "license": "mit",
-  "pushed": "2021-12-27T19:24:28Z"
- },
- {
-  "repo": "breuleux/quaint",
-  "dir": "breuleux__quaint",
-  "sha": "6bf8b7027c96f67d34e565ca9f331449e4674e73",
-  "q_files": 3,
-  "stars": 32,
-  "license": "bsd-3-clause",
-  "pushed": "2022-07-30T01:13:35Z"
+  "pushed": "2021-12-27T19:24:28Z",
+  "q_files_raw": 3
  },
  {
   "repo": "KxSystems/prometheus-kdb-exporter",
@@ -1779,7 +1806,8 @@
   "q_files": 3,
   "stars": 20,
   "license": "apache-2.0",
-  "pushed": "2026-07-29T15:11:34Z"
+  "pushed": "2026-07-29T15:11:34Z",
+  "q_files_raw": 3
  },
  {
   "repo": "simongarland/csvguess",
@@ -1788,16 +1816,8 @@
   "q_files": 3,
   "stars": 13,
   "license": "",
-  "pushed": "2020-08-31T15:26:51Z"
- },
- {
-  "repo": "jonathonmcmurray/qwebapi",
-  "dir": "jonathonmcmurray__qwebapi",
-  "sha": "25c802119b55ca4f3d18703fdf3c5d124781818b",
-  "q_files": 3,
-  "stars": 12,
-  "license": "mit",
-  "pushed": "2019-11-01T19:28:20Z"
+  "pushed": "2020-08-31T15:26:51Z",
+  "q_files_raw": 3
  },
  {
   "repo": "t-martin/qremote",
@@ -1806,7 +1826,8 @@
   "q_files": 3,
   "stars": 8,
   "license": "mit",
-  "pushed": "2026-04-11T14:59:37Z"
+  "pushed": "2026-04-11T14:59:37Z",
+  "q_files_raw": 3
  },
  {
   "repo": "aa1024/datetimeQ",
@@ -1815,16 +1836,8 @@
   "q_files": 3,
   "stars": 8,
   "license": "mit",
-  "pushed": "2019-12-07T16:14:36Z"
- },
- {
-  "repo": "nikilark/flipper_questions",
-  "dir": "nikilark__flipper_questions",
-  "sha": "b701d55fca4d5fee85b241ba992754ac7a3695aa",
-  "q_files": 3,
-  "stars": 8,
-  "license": "mit",
-  "pushed": "2024-03-27T09:15:38Z"
+  "pushed": "2019-12-07T16:14:36Z",
+  "q_files_raw": 3
  },
  {
   "repo": "KxSystems/docs-v1",
@@ -1833,7 +1846,8 @@
   "q_files": 3,
   "stars": 35,
   "license": "",
-  "pushed": "2019-05-02T15:03:18Z"
+  "pushed": "2019-05-02T15:03:18Z",
+  "q_files_raw": 3
  },
  {
   "repo": "AlgoTrader5/cryptoq",
@@ -1842,7 +1856,8 @@
   "q_files": 3,
   "stars": 24,
   "license": "",
-  "pushed": "2021-04-01T22:05:42Z"
+  "pushed": "2021-04-01T22:05:42Z",
+  "q_files_raw": 3
  },
  {
   "repo": "hughhyndman/kdbspark",
@@ -1851,7 +1866,8 @@
   "q_files": 3,
   "stars": 21,
   "license": "apache-2.0",
-  "pushed": "2020-05-28T13:33:15Z"
+  "pushed": "2020-05-28T13:33:15Z",
+  "q_files_raw": 3
  },
  {
   "repo": "mortensorensen/QInteractiveBrokers",
@@ -1860,16 +1876,8 @@
   "q_files": 3,
   "stars": 16,
   "license": "",
-  "pushed": "2019-01-14T13:00:27Z"
- },
- {
-  "repo": "kdbinsidebrains/plugin",
-  "dir": "kdbinsidebrains__plugin",
-  "sha": "6c7582bd3294b07ba23c9de347a9812a9973b357",
-  "q_files": 3,
-  "stars": 14,
-  "license": "apache-2.0",
-  "pushed": "2026-09-02T19:26:18Z"
+  "pushed": "2019-01-14T13:00:27Z",
+  "q_files_raw": 3
  },
  {
   "repo": "KxSystems/mqtt",
@@ -1878,7 +1886,8 @@
   "q_files": 3,
   "stars": 12,
   "license": "apache-2.0",
-  "pushed": "2026-04-01T09:21:53Z"
+  "pushed": "2026-04-01T09:21:53Z",
+  "q_files_raw": 3
  },
  {
   "repo": "krish240574/lstmq",
@@ -1887,7 +1896,8 @@
   "q_files": 3,
   "stars": 7,
   "license": "",
-  "pushed": "2017-12-16T07:13:25Z"
+  "pushed": "2017-12-16T07:13:25Z",
+  "q_files_raw": 3
  },
  {
   "repo": "secti6n/kPARC",
@@ -1896,16 +1906,8 @@
   "q_files": 3,
   "stars": 6,
   "license": "bsd-3-clause",
-  "pushed": "2018-05-30T13:22:34Z"
- },
- {
-  "repo": "danielkrizian/qinfo",
-  "dir": "danielkrizian__qinfo",
-  "sha": "2be11c43114a84681dc8a1c7028632b4d4813376",
-  "q_files": 3,
-  "stars": 3,
-  "license": "mit",
-  "pushed": "2019-01-08T21:01:07Z"
+  "pushed": "2018-05-30T13:22:34Z",
+  "q_files_raw": 3
  },
  {
   "repo": "davidcrossey/maint-blog",
@@ -1914,7 +1916,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "",
-  "pushed": "2019-10-09T12:09:31Z"
+  "pushed": "2019-10-09T12:09:31Z",
+  "q_files_raw": 3
  },
  {
   "repo": "siddharthsinhasecond-max/kdb-bedrock-tick",
@@ -1923,7 +1926,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "",
-  "pushed": "2026-10-07T22:12:01Z"
+  "pushed": "2026-10-07T22:12:01Z",
+  "q_files_raw": 3
  },
  {
   "repo": "lingchowc/kdbq-trade-quote-analysis",
@@ -1932,7 +1936,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "",
-  "pushed": "2026-08-25T03:50:14Z"
+  "pushed": "2026-08-25T03:50:14Z",
+  "q_files_raw": 3
  },
  {
   "repo": "SpencerFX/interviewQ",
@@ -1941,16 +1946,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-08-11T06:08:14Z"
- },
- {
-  "repo": "McSqwurd/QDigitRec",
-  "dir": "McSqwurd__QDigitRec",
-  "sha": "14bddd8f8fb4bdd03cbad29333d2c3eb070d4f98",
-  "q_files": 3,
-  "stars": 1,
-  "license": "",
-  "pushed": "2026-03-12T10:37:20Z"
+  "pushed": "2026-08-11T06:08:14Z",
+  "q_files_raw": 3
  },
  {
   "repo": "jamiechandler99/kdb-challenge",
@@ -1959,7 +1956,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "",
-  "pushed": "2026-01-29T18:47:30Z"
+  "pushed": "2026-01-29T18:47:30Z",
+  "q_files_raw": 3
  },
  {
   "repo": "mm00re1/kdb-REST",
@@ -1968,7 +1966,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "apache-2.0",
-  "pushed": "2025-08-03T15:52:15Z"
+  "pushed": "2025-08-03T15:52:15Z",
+  "q_files_raw": 3
  },
  {
   "repo": "gordonluo13/kdb_coingecko_project",
@@ -1977,16 +1976,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "",
-  "pushed": "2025-06-27T06:19:56Z"
- },
- {
-  "repo": "SpencerFX/qlearing",
-  "dir": "SpencerFX__qlearing",
-  "sha": "35b62c3987a2045f67f665de8dd55d721d902534",
-  "q_files": 3,
-  "stars": 0,
-  "license": "mit",
-  "pushed": "2024-12-21T14:07:05Z"
+  "pushed": "2025-06-27T06:19:56Z",
+  "q_files_raw": 3
  },
  {
   "repo": "fabpotato/tickerplant",
@@ -1995,7 +1986,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "",
-  "pushed": "2020-01-06T17:17:22Z"
+  "pushed": "2020-01-06T17:17:22Z",
+  "q_files_raw": 3
  },
  {
   "repo": "honus85/tickerplantdemo",
@@ -2004,7 +1996,8 @@
   "q_files": 3,
   "stars": 0,
   "license": "mit",
-  "pushed": "2020-06-14T14:19:04Z"
+  "pushed": "2020-06-14T14:19:04Z",
+  "q_files_raw": 3
  },
  {
   "repo": "jparmstrong/qphue",
@@ -2013,7 +2006,8 @@
   "q_files": 3,
   "stars": 5,
   "license": "",
-  "pushed": "2016-08-30T23:47:11Z"
+  "pushed": "2016-08-30T23:47:11Z",
+  "q_files_raw": 3
  },
  {
   "repo": "adnansaify/kdb-q",
@@ -2022,7 +2016,8 @@
   "q_files": 3,
   "stars": 3,
   "license": "",
-  "pushed": "2024-07-28T06:03:58Z"
+  "pushed": "2024-07-28T06:03:58Z",
+  "q_files_raw": 3
  },
  {
   "repo": "nicholasferguson/kdb.q.studies",
@@ -2031,7 +2026,8 @@
   "q_files": 3,
   "stars": 1,
   "license": "",
-  "pushed": "2019-07-19T20:13:22Z"
+  "pushed": "2019-07-19T20:13:22Z",
+  "q_files_raw": 3
  },
  {
   "repo": "gihiiii/Limit-Order-Book-Engine",
@@ -2040,16 +2036,88 @@
   "q_files": 3,
   "stars": 1,
   "license": "",
-  "pushed": "2026-09-23T09:18:29Z"
+  "pushed": "2026-09-23T09:18:29Z",
+  "q_files_raw": 3
  },
  {
-  "repo": "DataIntellectTech/kdb-fix-adaptor",
-  "dir": "DataIntellectTech__kdb-fix-adaptor",
-  "sha": "11941454f0224d377cb17bd32e8d1a666f63294c",
+  "repo": "nyierr/q-99",
+  "dir": "nyierr__q-99",
+  "sha": "f67af9f9cd5385b48f7093c0d091725590a6e143",
   "q_files": 2,
-  "stars": 20,
+  "stars": 0,
+  "license": "gpl-3.0",
+  "pushed": "2020-05-27T19:47:06Z",
+  "q_files_raw": 4
+ },
+ {
+  "repo": "mortensorensen/projecteuler",
+  "dir": "mortensorensen__projecteuler",
+  "sha": "47288c3e798833f7664d970fe7385574d991a8e1",
+  "q_files": 2,
+  "stars": 1,
+  "license": "",
+  "pushed": "2016-08-01T13:04:44Z",
+  "q_files_raw": 4
+ },
+ {
+  "repo": "konradbachusz-zz/KDB-q-notes",
+  "dir": "konradbachusz-zz__KDB-q-notes",
+  "sha": "9ee8fcc21e3c3e1b12c121336281265ecf948e0c",
+  "q_files": 2,
+  "stars": 1,
+  "license": "",
+  "pushed": "2021-03-21T21:46:01Z",
+  "q_files_raw": 4
+ },
+ {
+  "repo": "jonathonmcmurray/qwebapi",
+  "dir": "jonathonmcmurray__qwebapi",
+  "sha": "25c802119b55ca4f3d18703fdf3c5d124781818b",
+  "q_files": 2,
+  "stars": 12,
   "license": "mit",
-  "pushed": "2023-03-06T17:30:38Z"
+  "pushed": "2019-11-01T19:28:20Z",
+  "q_files_raw": 3
+ },
+ {
+  "repo": "kdbinsidebrains/plugin",
+  "dir": "kdbinsidebrains__plugin",
+  "sha": "6c7582bd3294b07ba23c9de347a9812a9973b357",
+  "q_files": 2,
+  "stars": 14,
+  "license": "apache-2.0",
+  "pushed": "2026-09-02T19:26:18Z",
+  "q_files_raw": 3
+ },
+ {
+  "repo": "danielkrizian/qinfo",
+  "dir": "danielkrizian__qinfo",
+  "sha": "2be11c43114a84681dc8a1c7028632b4d4813376",
+  "q_files": 2,
+  "stars": 3,
+  "license": "mit",
+  "pushed": "2019-01-08T21:01:07Z",
+  "q_files_raw": 3
+ },
+ {
+  "repo": "McSqwurd/QDigitRec",
+  "dir": "McSqwurd__QDigitRec",
+  "sha": "14bddd8f8fb4bdd03cbad29333d2c3eb070d4f98",
+  "q_files": 2,
+  "stars": 1,
+  "license": "",
+  "pushed": "2026-03-12T10:37:20Z",
+  "q_files_raw": 3
+ },
+ {
+  "repo": "SpencerFX/qlearing",
+  "dir": "SpencerFX__qlearing",
+  "sha": "35b62c3987a2045f67f665de8dd55d721d902534",
+  "q_files": 2,
+  "stars": 0,
+  "license": "mit",
+  "pushed": "2024-12-21T14:07:05Z",
+  "q_files_raw": 3
  },
  {
   "repo": "patmok/unparse",
@@ -2058,7 +2126,8 @@
   "q_files": 2,
   "stars": 17,
   "license": "",
-  "pushed": "2022-03-26T14:08:02Z"
+  "pushed": "2022-03-26T14:08:02Z",
+  "q_files_raw": 2
  },
  {
   "repo": "mkeenan-kdb/snpDive",
@@ -2067,7 +2136,8 @@
   "q_files": 2,
   "stars": 17,
   "license": "mit",
-  "pushed": "2019-05-29T03:13:52Z"
+  "pushed": "2019-05-29T03:13:52Z",
+  "q_files_raw": 2
  },
  {
   "repo": "t-martin/qmail",
@@ -2076,16 +2146,8 @@
   "q_files": 2,
   "stars": 13,
   "license": "mit",
-  "pushed": "2020-11-28T11:47:03Z"
- },
- {
-  "repo": "amr4i/Query-Biased-Multi-Document-Abstractive-Summarisation",
-  "dir": "amr4i__Query-Biased-Multi-Document-Abstractive-Summarisation",
-  "sha": "c9e8b5b24d236328589229fedccfe919186d8a9e",
-  "q_files": 2,
-  "stars": 9,
-  "license": "",
-  "pushed": "2019-05-03T07:20:49Z"
+  "pushed": "2020-11-28T11:47:03Z",
+  "q_files_raw": 2
  },
  {
   "repo": "KxSystems/man",
@@ -2094,7 +2156,8 @@
   "q_files": 2,
   "stars": 8,
   "license": "apache-2.0",
-  "pushed": "2020-12-25T02:12:41Z"
+  "pushed": "2020-12-25T02:12:41Z",
+  "q_files_raw": 2
  },
  {
   "repo": "KxSystems/mlnotebooks",
@@ -2103,7 +2166,8 @@
   "q_files": 2,
   "stars": 65,
   "license": "",
-  "pushed": "2024-07-12T15:10:50Z"
+  "pushed": "2024-07-12T15:10:50Z",
+  "q_files_raw": 2
  },
  {
   "repo": "hughhyndman/pgtokdb",
@@ -2112,7 +2176,8 @@
   "q_files": 2,
   "stars": 18,
   "license": "apache-2.0",
-  "pushed": "2019-11-16T13:06:22Z"
+  "pushed": "2019-11-16T13:06:22Z",
+  "q_files_raw": 2
  },
  {
   "repo": "KxSystems/kxkdb",
@@ -2121,16 +2186,8 @@
   "q_files": 2,
   "stars": 12,
   "license": "",
-  "pushed": "2023-06-05T14:28:43Z"
- },
- {
-  "repo": "enlnt/Q.jl",
-  "dir": "enlnt__Q.jl",
-  "sha": "bd9ce8d1c93fceb4e66649b212bd92c719a44086",
-  "q_files": 2,
-  "stars": 7,
-  "license": "other",
-  "pushed": "2017-10-29T02:44:13Z"
+  "pushed": "2023-06-05T14:28:43Z",
+  "q_files_raw": 2
  },
  {
   "repo": "psaris/mm",
@@ -2139,7 +2196,8 @@
   "q_files": 2,
   "stars": 6,
   "license": "mit",
-  "pushed": "2023-05-14T16:37:45Z"
+  "pushed": "2023-05-14T16:37:45Z",
+  "q_files_raw": 2
  },
  {
   "repo": "FlyingOE/q_BosonNLP",
@@ -2148,16 +2206,8 @@
   "q_files": 2,
   "stars": 2,
   "license": "apache-2.0",
-  "pushed": "2017-09-05T08:44:30Z"
- },
- {
-  "repo": "a2ndrade/k3-intellij-plugin",
-  "dir": "a2ndrade__k3-intellij-plugin",
-  "sha": "b7b3997d17d22b82cfeb7f152f5209dd7f9ff047",
-  "q_files": 2,
-  "stars": 2,
-  "license": "mit",
-  "pushed": "2024-08-12T16:55:21Z"
+  "pushed": "2017-09-05T08:44:30Z",
+  "q_files_raw": 2
  },
  {
   "repo": "peteclarkez/hassio-kdb",
@@ -2166,16 +2216,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2026-02-15T12:38:16Z"
- },
- {
-  "repo": "EwanC1234567/qStringUtils",
-  "dir": "EwanC1234567__qStringUtils",
-  "sha": "d2ba634b2d91dfe87cb1c7fd6c8d5d979f970e78",
-  "q_files": 2,
-  "stars": 0,
-  "license": "",
-  "pushed": "2026-09-04T07:37:37Z"
+  "pushed": "2026-02-15T12:38:16Z",
+  "q_files_raw": 2
  },
  {
   "repo": "ghasimi/q",
@@ -2184,7 +2226,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2026-07-31T15:46:37Z"
+  "pushed": "2026-07-31T15:46:37Z",
+  "q_files_raw": 2
  },
  {
   "repo": "hablapps/cutie",
@@ -2193,7 +2236,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "apache-2.0",
-  "pushed": "2026-03-26T23:55:42Z"
+  "pushed": "2026-03-26T23:55:42Z",
+  "q_files_raw": 2
  },
  {
   "repo": "alpha-training/qi-binance",
@@ -2202,7 +2246,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2026-03-06T10:34:43Z"
+  "pushed": "2026-03-06T10:34:43Z",
+  "q_files_raw": 2
  },
  {
   "repo": "alpha-training/qi-kraken",
@@ -2211,7 +2256,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2026-03-02T15:36:20Z"
+  "pushed": "2026-03-02T15:36:20Z",
+  "q_files_raw": 2
  },
  {
   "repo": "gabiteodoru/qautodiff_toy_demo",
@@ -2220,7 +2266,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "mit",
-  "pushed": "2025-12-14T21:28:24Z"
+  "pushed": "2025-12-14T21:28:24Z",
+  "q_files_raw": 2
  },
  {
   "repo": "charleshcl/aoc-2024",
@@ -2229,7 +2276,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2025-08-26T22:16:30Z"
+  "pushed": "2025-08-26T22:16:30Z",
+  "q_files_raw": 2
  },
  {
   "repo": "jlas/doom.q",
@@ -2238,7 +2286,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2025-08-06T03:44:14Z"
+  "pushed": "2025-08-06T03:44:14Z",
+  "q_files_raw": 2
  },
  {
   "repo": "drewsteele/qYaml",
@@ -2247,7 +2296,8 @@
   "q_files": 2,
   "stars": 2,
   "license": "mit",
-  "pushed": "2025-07-22T15:37:46Z"
+  "pushed": "2025-07-22T15:37:46Z",
+  "q_files_raw": 2
  },
  {
   "repo": "SpencerFX/q-math-calculus",
@@ -2256,7 +2306,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "mit",
-  "pushed": "2025-01-04T04:18:42Z"
+  "pushed": "2025-01-04T04:18:42Z",
+  "q_files_raw": 2
  },
  {
   "repo": "MystiquePanda/aoc-2024",
@@ -2265,7 +2316,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "mit",
-  "pushed": "2024-12-08T18:09:51Z"
+  "pushed": "2024-12-08T18:09:51Z",
+  "q_files_raw": 2
  },
  {
   "repo": "nicelgueta/aoc2024",
@@ -2274,7 +2326,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2024-12-03T22:59:51Z"
+  "pushed": "2024-12-03T22:59:51Z",
+  "q_files_raw": 2
  },
  {
   "repo": "Sujitarun/KDBData_Queries",
@@ -2283,7 +2336,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2026-03-19T08:59:20Z"
+  "pushed": "2026-03-19T08:59:20Z",
+  "q_files_raw": 2
  },
  {
   "repo": "alpha-training/qi-tp",
@@ -2292,7 +2346,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "",
-  "pushed": "2026-03-12T20:58:23Z"
+  "pushed": "2026-03-12T20:58:23Z",
+  "q_files_raw": 2
  },
  {
   "repo": "alphakdb/qi-tp",
@@ -2301,7 +2356,8 @@
   "q_files": 2,
   "stars": 0,
   "license": "mit",
-  "pushed": "2026-03-16T12:49:44Z"
+  "pushed": "2026-03-16T12:49:44Z",
+  "q_files_raw": 2
  },
  {
   "repo": "drzwz/qWind",
@@ -2310,7 +2366,8 @@
   "q_files": 2,
   "stars": 5,
   "license": "",
-  "pushed": "2017-10-10T10:33:22Z"
+  "pushed": "2017-10-10T10:33:22Z",
+  "q_files_raw": 2
  },
  {
   "repo": "indiscible/qmandel",
@@ -2319,16 +2376,8 @@
   "q_files": 2,
   "stars": 4,
   "license": "",
-  "pushed": "2015-03-11T23:28:42Z"
- },
- {
-  "repo": "jparmstrong/qduck",
-  "dir": "jparmstrong__qduck",
-  "sha": "2021078451f2e52e1329a53cf98c6d5b384ca78c",
-  "q_files": 2,
-  "stars": 3,
-  "license": "unlicense",
-  "pushed": "2025-04-20T17:07:49Z"
+  "pushed": "2015-03-11T23:28:42Z",
+  "q_files_raw": 2
  },
  {
   "repo": "dpkwhan/weeklyq",
@@ -2337,7 +2386,8 @@
   "q_files": 2,
   "stars": 2,
   "license": "",
-  "pushed": "2020-11-26T23:31:06Z"
+  "pushed": "2020-11-26T23:31:06Z",
+  "q_files_raw": 2
  },
  {
   "repo": "MrKLawrence/loopVsIteratorKdbQ",
@@ -2346,6 +2396,7 @@
   "q_files": 2,
   "stars": 1,
   "license": "bsd-3-clause",
-  "pushed": "2021-05-28T17:47:17Z"
+  "pushed": "2021-05-28T17:47:17Z",
+  "q_files_raw": 2
  }
 ]

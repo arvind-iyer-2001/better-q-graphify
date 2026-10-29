@@ -3,7 +3,7 @@
 
 Third-party code is never committed: corpora/MANIFEST.json (repo, license, pinned commit, q file count) is.
 Cloned code is untrusted data: it is only read, and executed (if at all) by `qverify --execute` inside the
-sandbox. Usage: python3 scripts/fetch_corpus.py [--max-mb 150] [--min-q-files 2] [--jobs 6]
+sandbox. Usage: uv run --project qverify python scripts/fetch_corpus.py [--max-mb 150] [--min-q-files 2] [--jobs 6]
 """
 from __future__ import annotations
 
@@ -37,6 +37,28 @@ def gh(*args: str) -> list[dict]:
     return json.loads(p.stdout) if p.returncode == 0 and p.stdout.strip() else []
 
 
+def count_q(d: Path) -> int:
+    """Number of .q files that really are q code (content check; see qverify.qdetect)."""
+    from qverify.qdetect import looks_like_q
+    return sum(1 for f in d.rglob("*.q") if f.is_file() and f.stat().st_size <= 1_000_000 and looks_like_q(f))
+
+
+def refilter(min_q: int, apply: bool) -> None:
+    """Recompute q_files for existing clones with the content check; drop repos that are not q projects."""
+    old = json.loads((CORPORA / "MANIFEST.json").read_text())
+    keep, drop = [], []
+    for m in old:
+        n = count_q(CORPORA / m["dir"])
+        (keep if n >= min_q else drop).append({**m, "q_files_raw": m["q_files"], "q_files": n})
+    print(f"keep {len(keep)} repos / {sum(m['q_files'] for m in keep)} q files; drop {len(drop)}")
+    for m in sorted(drop, key=lambda m: -m["q_files_raw"])[:25]:
+        print(f"  drop {m['repo']}: {m['q_files']} real of {m['q_files_raw']} .q files")
+    if apply:
+        for m in drop:
+            subprocess.run(["rm", "-rf", str(CORPORA / m["dir"])])
+        (CORPORA / "MANIFEST.json").write_text(json.dumps(sorted(keep, key=lambda m: -m["q_files"]), indent=1))
+
+
 def clone(repo: dict) -> dict:
     name = repo["fullName"].replace("/", "__")
     dest = CORPORA / name
@@ -48,7 +70,7 @@ def clone(repo: dict) -> dict:
         if p.returncode:
             return {**repo, "error": p.stderr.strip()[-200:]}
     sha = subprocess.run(["git", "-C", str(dest), "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
-    qn = sum(1 for _ in dest.rglob("*.q"))
+    qn = count_q(dest)
     return {**repo, "dir": name, "sha": sha, "q_files": qn}
 
 
@@ -57,8 +79,13 @@ def main() -> None:
     ap.add_argument("--max-mb", type=int, default=150)
     ap.add_argument("--min-q-files", type=int, default=2)
     ap.add_argument("--jobs", type=int, default=6)
+    ap.add_argument("--refilter", action="store_true", help="re-check existing clones with the content check")
+    ap.add_argument("--apply", action="store_true", help="with --refilter: delete dropped clones, rewrite manifest")
     a = ap.parse_args()
     CORPORA.mkdir(exist_ok=True)
+    if a.refilter:
+        refilter(a.min_q_files, a.apply)
+        return
     seen: dict[str, dict] = {}
     for s in SEARCHES:
         for r in gh(*s):

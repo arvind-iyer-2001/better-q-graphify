@@ -17,6 +17,8 @@ from __future__ import annotations
 
 import importlib
 import re
+import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +27,7 @@ from graphify.extractors.base import _file_stem, _make_id, _read_text
 _QSQL = {"select_statement", "exec_statement", "update_statement", "delete_statement"}
 _QSQL_CLAUSES = {"select_clause", "by_clause", "where_clause"}
 _ADVERB_FUNS = {"each", "peach", "over", "scan", "prior", "sv", "vs"}
+PARSE_BUDGET_S = 10.0
 _NAMES = {"identifier", "dotted_name"}
 
 
@@ -35,6 +38,7 @@ def _parser():
 
 
 def extract_q(path: Path) -> dict:
+    sys.setrecursionlimit(max(sys.getrecursionlimit(), 20000))
     """Extract functions, variables, calls, reads, imports, and table uses from a .q file.
 
     Node fields: id, label, file_type, source_file, source_location
@@ -47,7 +51,12 @@ def extract_q(path: Path) -> dict:
 
     try:
         src = Path(path).read_bytes()
-        root = parser.parse(src).root_node
+        t_start = time.monotonic()
+        # the grammar can run away on some inputs (see q-tree-sitter notes): cancel after a time budget
+        tree = parser.parse(src, progress_callback=lambda _state: time.monotonic() - t_start > PARSE_BUDGET_S)
+        if tree is None:
+            return {"nodes": [], "edges": [], "error": f"parse cancelled after {PARSE_BUDGET_S}s"}
+        root = tree.root_node
     except Exception as e:
         return {"nodes": [], "edges": [], "error": str(e)}
 
@@ -153,8 +162,10 @@ def extract_q(path: Path) -> dict:
         def ref(name_node: Any, relation: str, qsql_gated: bool = False) -> None:
             m_ = re.match(r"[.A-Za-z_][\w.]*", text(name_node))
             raw = m_.group(0) if m_ else text(name_node)  # the grammar can glue `:value` onto a dotted name
-            if name_node.type == "identifier" and ("." in raw or raw in scope):
-                return  # local/param, or a.b field access (not a global name)
+            if name_node.type == "identifier" and raw in scope:
+                return  # local / parameter
+            if name_node.type == "identifier" and re.search(rb"\d[nNwW]?$", src[max(0, name_node.start_byte - 3):name_node.start_byte]):
+                return  # typed null/infinity suffix (0nf, 0wu, 0Nj): the grammar emits the suffix as an identifier
             tgt = qualify(raw)
             if tgt == ".z.s" or tgt.startswith(".z.m."):
                 return  # `.z.s` is the running lambda; `.z.m` is the per-module namespace, unresolvable statically
@@ -175,7 +186,9 @@ def extract_q(path: Path) -> dict:
             left, right = node.child_by_field_name("left"), node.child_by_field_name("right")
             op = node.child_by_field_name("operator")
             optext = text(op) if op is not None else ":"
-            if left is not None:
+            if left is not None and in_qsql:
+                pass  # `update c:..` / `c+:..` inside qsql define columns, not globals
+            elif left is not None:
                 if left.type in _NAMES:
                     # `x:v` in a lambda is a local (see lambda_scope); `.ns.x:v`, `x::v`, `x+:v`, `x,:v` write a global
                     if left.type == "dotted_name" or optext != ":":
@@ -236,15 +249,28 @@ def extract_q(path: Path) -> dict:
             refs_in(c, owner, scope, in_qsql)
 
     def handle_assignment(node: Any) -> None:
-        left, right = node.child_by_field_name("left"), node.child_by_field_name("right")
-        if left is None or right is None:
+        # `a:b:{..}` defines both names; the value is the innermost right-hand side
+        targets, cur = [], node
+        while cur is not None and cur.type == "assignment":
+            left = cur.child_by_field_name("left")
+            if left is None or left.type not in _NAMES:
+                return
+            targets.append((left, cur))
+            cur = cur.child_by_field_name("right")
+        if not targets or cur is None:
             return
-        name = qualify(text(left))
-        line = node.start_point[0] + 1
-        nid = _make_id(str(path), name)
-        add_node(nid, name, line)
-        add_edge(file_nid, nid, "contains", line)
-        refs_in(right, nid, set())  # a lambda opens its own scope inside refs_in
+        for left, a in targets:
+            m = re.match(r"[.A-Za-z_][\w.]*", text(left))
+            name = qualify(m.group(0) if m else text(left))
+            line = a.start_point[0] + 1
+            nid = _make_id(str(path), name)
+            add_node(nid, name, line)
+            for n in reversed(nodes):
+                if n["id"] == nid:
+                    n["rhs_kind"] = "lambda" if cur.type == "lambda" else "expr"
+                    break
+            add_edge(file_nid, nid, "contains", line)
+            refs_in(cur, nid, set())  # a lambda opens its own scope inside refs_in
 
     def handle_system_command(node: Any) -> None:
         t = text(node).strip()

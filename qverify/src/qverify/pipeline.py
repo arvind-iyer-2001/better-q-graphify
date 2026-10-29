@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from . import order, runner, safety, t0
+from .qdetect import looks_like_q
 from .keywords import q_keywords
 from .merge import merge
 
@@ -13,7 +14,7 @@ MAX_BYTES = 1_000_000  # larger .q files are data dumps / generated code; parsin
 
 def discover(root: Path) -> list[Path]:
     return sorted(p.resolve() for p in root.rglob("*.q")
-                  if p.is_file() and p.stat().st_size <= MAX_BYTES and "graphify-out" not in p.parts and ".venv" not in p.parts)
+                  if p.is_file() and p.stat().st_size <= MAX_BYTES and looks_like_q(p) and "graphify-out" not in p.parts and ".venv" not in p.parts)
 
 
 def _calibrated() -> dict:
