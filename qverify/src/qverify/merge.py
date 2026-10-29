@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from graphify.extractors.base import _make_id
+from .ids import make_id as _make_id
 
 SCORES = {
     "def_t2": 0.97, "def_t0": 0.70, "def_t0_unloaded": 0.60, "def_t0_not_in_runtime": 0.30,
@@ -203,6 +203,9 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
                      ["tree-sitter edge supported by a name inside a compiled qsql expression "
                       "(value f keeps those in constants, not in the globals list)"])
             continue
+        if (tkey is None and skey in rt_defs and tgt.startswith((".Q.", ".q.", ".z.", ".h.", ".j.", ".o."))
+                and any(tgt == c for sy in rt_defs[skey].get("symconst", []) for c in sym_candidates(rt_defs[skey], sy))):
+            continue  # builtin referenced inside a compiled qsql expression: supported, but not a project node
         tail = tgt.rsplit(".", 1)[-1]
         is_kw = tkey is None and (tail in keywords or tail in ("x", "y", "z") or not tail or not tail[0].isalpha())
         if skey in reflected:

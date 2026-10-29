@@ -97,3 +97,9 @@ def test_column_update_inside_qsql_is_not_a_global_write(tmp_path):
 def test_relative_dotted_name_is_namespace_relative(tmp_path):
     e = edges(tmp_path, "\\d .ml\ni.g:{x}\nf:{i.g x}\n")
     assert (".ml.f", "calls", ".ml.i.g") in e
+
+
+def test_names_differing_only_by_case_stay_distinct(tmp_path):
+    e = edges(tmp_path, "l:1\nL:2\nf:{l}\ng:{L}\n")
+    assert ("f", "reads", "l") in e and ("g", "reads", "L") in e
+    assert ("f", "reads", "L") not in e and ("g", "reads", "l") not in e

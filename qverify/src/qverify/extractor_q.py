@@ -22,7 +22,9 @@ import time
 from pathlib import Path
 from typing import Any
 
-from graphify.extractors.base import _file_stem, _make_id, _read_text
+from graphify.extractors.base import _file_stem, _read_text
+
+from .ids import make_id as _make_id
 
 _QSQL = {"select_statement", "exec_statement", "update_statement", "delete_statement"}
 _QSQL_CLAUSES = {"select_clause", "by_clause", "where_clause"}
@@ -167,7 +169,7 @@ def extract_q(path: Path) -> dict:
             if name_node.type == "identifier" and re.search(rb"\d[nNwW]?$", src[max(0, name_node.start_byte - 3):name_node.start_byte]):
                 return  # typed null/infinity suffix (0nf, 0wu, 0Nj): the grammar emits the suffix as an identifier
             tgt = qualify(raw)
-            if tgt == ".z.s" or tgt.startswith(".z.m."):
+            if tgt == ".z.s" or tgt.startswith((".z.m.", ".z.M.")):
                 return  # `.z.s` is the running lambda; `.z.m` is the per-module namespace, unresolvable statically
             if qsql_gated and tgt not in file_defs:
                 return  # probably a table column
