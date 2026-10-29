@@ -36,6 +36,12 @@ uv run pytest
   denies network, file writes and process execution. File reads are allowed except common credential
   directories. Without `--execute` everything stays at T0.
 
+## Calibration
+
+`uv run qverify calibrate <roots> --write src/qverify/calibration.json` measures tree-sitter edge precision
+against q on files that load, and `build` uses it as the score for unexecuted T0 edges. Those edges are
+capped at `INFERRED` regardless of the measured value (the files that fail to load are likely harder).
+
 ## Status
 
 The `corpus/` test set is small and in-sample. See `HANDOFF.md` for measured results and open tasks.

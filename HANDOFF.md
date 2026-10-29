@@ -4,7 +4,7 @@
 `qverify/` adds a q-verified confidence layer on top of the existing tree-sitter-q grammar
 (`~/development/q-tree-sitter`, not modified). Pipeline: tree-sitter extraction (T0) -> sandboxed live q
 reflection (`value f`, T2 defs / T3 resolved references) -> merge with per-node/edge `tier`,
-`confidence_score`, `evidence` -> graphify build/cluster/report. 19 tests pass (`uv run pytest`).
+`confidence_score`, `evidence` -> graphify build/cluster/report. 20 tests pass (`uv run pytest`).
 
 ## Done (extractor, this repo only)
 - `extractor_q.py`: vendored + rewritten. Scope analysis (params, implicit x/y/z, `name:` locals; no closures),
@@ -31,7 +31,7 @@ reflection (`value f`, T2 defs / T3 resolved references) -> merge with per-node/
 | 1 | Isolate name collisions in calibration (load each script in a fresh namespace) so precision is not understated | med |
 | 2 | Residual kdb refutations (~17 non-collision): inspect and classify | med |
 | 3 | Real-corpus load errors are environmental (.so modules, data files, `.utl.require`); stub or preload | med |
-| 4 | Calibrate SCORES empirically per tier instead of policy constants | med |
+| 4 | Calibrate remaining SCORES (only edge_t0_known is measured: 0.95, n=318); needs per-relation and per-def scores | med |
 | 5 | Feed `enrichment_queue` to graphify LLM step; mark results INFERRED below T3 | med |
 | 6 | Reflect `.z.*` handlers (excluded as builtin namespace) | low |
 

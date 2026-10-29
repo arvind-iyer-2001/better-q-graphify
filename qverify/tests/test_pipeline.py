@@ -54,3 +54,9 @@ def test_dynamic_function_queued_for_enrichment(verified):
 def test_safety_refuses_top_level_exit_only():
     assert not safety.scan("f:{1}\nexit 0\n")["safe"]
     assert safety.scan("f:{exit 0}\n")["safe"]
+
+
+def test_unexecuted_reference_edges_never_extracted():
+    r = analyse(CORPUS, execute=False)
+    refs = [e for e in r["edges"] if e["relation"] in ("calls", "reads", "writes", "uses")]
+    assert refs and all(e["confidence"] != "EXTRACTED" for e in refs)

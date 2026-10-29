@@ -1,0 +1,10 @@
+{
+  "edge_t0_known": 0.95,
+  "n_edges": 318,
+  "sources": [
+    "cookbook",
+    "kdb",
+    "reQ"
+  ],
+  "note": "pooled precision of tree-sitter edges vs q on files that loaded; excludes callers whose name is defined in several scripts. Files that fail to load are likely harder, so this is an upper bound for them."
+}

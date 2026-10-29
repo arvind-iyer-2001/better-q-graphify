@@ -13,7 +13,16 @@ def discover(root: Path) -> list[Path]:
                   if "graphify-out" not in p.parts and ".venv" not in p.parts)
 
 
+def _calibrated() -> dict:
+    f = Path(__file__).with_name("calibration.json")
+    if not f.exists():
+        return {}
+    c = json.loads(f.read_text())
+    return {"edge_t0_known": c["edge_t0_known"]}
+
+
 def analyse(root: Path, execute: bool = False, scores: dict | None = None) -> dict:
+    scores = {**_calibrated(), **(scores or {})}
     root = root.resolve()
     files = discover(root)
     t0d = {f: t0.extract(f) for f in files}

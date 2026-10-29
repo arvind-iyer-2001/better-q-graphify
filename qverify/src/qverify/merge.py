@@ -47,8 +47,11 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
         key = (src, tgt, rel_)
         if key in edges and edges[key]["confidence_score"] >= score:
             return
+        conf = label_for(score)
+        if tier == "T0" and rel_ in ("calls", "reads", "writes", "uses") and conf == "EXTRACTED":
+            conf = "INFERRED"  # never EXTRACTED without runtime verification, whatever the measured precision
         edges[key] = {"source": src, "target": tgt, "relation": rel_,
-                      "confidence": label_for(score), "confidence_score": round(score, 2),
+                      "confidence": conf, "confidence_score": round(score, 2),
                       "tier": tier, "source_file": file, "source_location": f"L{line}",
                       "evidence": evidence}
 

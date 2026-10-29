@@ -24,9 +24,11 @@ def main() -> None:
     e.add_argument("truth", type=Path)
     c = sub.add_parser("calibrate", help="score tree-sitter edges against q's own resolution (no hand truth)")
     c.add_argument("roots", type=Path, nargs="+")
+    c.add_argument("--write", type=Path, help="write pooled measured precision to this calibration.json")
     a = ap.parse_args()
 
     if a.cmd == "calibrate":
+        pooled_ag = pooled_rf = 0
         for r in a.roots:
             res = analyse(r, execute=True)
             st = Counter(s["status"] for s in res["status"].values())
@@ -55,6 +57,17 @@ def main() -> None:
                               "T0_precision_after": round(ag / (ag + rf), 3) if ag + rf else None,
                               "T0_precision_unique_names": round(ag / (ag + uniq_rf), 3) if ag + uniq_rf else None,
                               "T0_recall_vs_q": round(ag / (ag + ms), 3) if ag + ms else None}))
+            pooled_ag += ag
+            pooled_rf += uniq_rf
+        if a.write and pooled_ag + pooled_rf:
+            prec = round(pooled_ag / (pooled_ag + pooled_rf), 2)
+            a.write.write_text(json.dumps({
+                "edge_t0_known": prec, "n_edges": pooled_ag + pooled_rf,
+                "sources": [r.name for r in a.roots],
+                "note": "pooled precision of tree-sitter edges vs q on files that loaded; "
+                        "excludes callers whose name is defined in several scripts. Files that fail to load "
+                        "are likely harder, so this is an upper bound for them."}, indent=2))
+            print(f"wrote {a.write}: edge_t0_known={prec} (n={pooled_ag + pooled_rf})")
         return
 
     if a.cmd == "eval":
