@@ -68,3 +68,13 @@ def test_global_writes(tmp_path):
 
 def test_self_recursion_kept(tmp_path):
     assert ("f", "calls", "f") in edges(tmp_path, "f:{$[x>0;f x-1;0]}\n")
+
+
+def test_system_d_switches_namespace(tmp_path):
+    e = edges(tmp_path, 'system "d .perm";\nh:{x}\nf:{h x}\n')
+    assert (".perm.f", "calls", ".perm.h") in e
+
+
+def test_glued_assignment_name_and_module_namespace(tmp_path):
+    e = edges(tmp_path, "f:{.z.m.log:1; .z.m.other x}\n")
+    assert not any(t.startswith(".z.m") or ":" in t for _, _, t in e)

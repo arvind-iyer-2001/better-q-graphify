@@ -14,10 +14,13 @@ def imports_of(path: Path, root: Path, known: dict[str, Path]) -> list[tuple[str
     for m in _IMPORT.finditer(text):
         raw = (m.group(1) or m.group(2)).strip().strip('"')
         line = text.count("\n", 0, m.start()) + 1
-        cand = [root / raw, path.parent / raw]
-        hit = next((c.resolve() for c in cand if c.is_file()), None)
-        if hit is None:  # q allows omitting the extension
-            hit = next((c.with_suffix(".q").resolve() for c in cand if c.with_suffix(".q").is_file()), None)
+        try:
+            cand = [root / raw, path.parent / raw]
+            hit = next((c.resolve() for c in cand if c.is_file()), None)
+            if hit is None:  # q allows omitting the extension
+                hit = next((c.with_suffix(".q").resolve() for c in cand if c.with_suffix(".q").is_file()), None)
+        except (ValueError, OSError):
+            hit = None  # unparseable load target, e.g. `\l //`
         out.append((raw, hit, line))
     return out
 

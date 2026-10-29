@@ -10,7 +10,7 @@ from .merge import merge
 
 def discover(root: Path) -> list[Path]:
     return sorted(p.resolve() for p in root.rglob("*.q")
-                  if "graphify-out" not in p.parts and ".venv" not in p.parts)
+                  if p.is_file() and "graphify-out" not in p.parts and ".venv" not in p.parts)
 
 
 def _calibrated() -> dict:

@@ -102,9 +102,16 @@ def extract_q(path: Path) -> dict:
     # ---- pre-pass: names defined at file level (used to gate qsql column-vs-global reads) ----
     file_defs: set[str] = set()
 
+    def system_ns(node: Any) -> None:
+        m = re.search(r'system\s*"d\s+([^"\s]+)"', text(node))
+        if m:
+            ns_stack[-1] = "" if m.group(1) == "." else m.group(1)
+
     def prepass(node: Any) -> None:
         if node.type in ("system_command", "namespace_directive"):
             apply_ns(node)
+        elif node.type == "call":
+            system_ns(node)
         elif node.type == "assignment":
             left = node.child_by_field_name("left")
             if left is not None and left.type in _NAMES:
@@ -144,12 +151,13 @@ def extract_q(path: Path) -> dict:
         line = node.start_point[0] + 1
 
         def ref(name_node: Any, relation: str, qsql_gated: bool = False) -> None:
-            raw = text(name_node)
+            m_ = re.match(r"[.A-Za-z_][\w.]*", text(name_node))
+            raw = m_.group(0) if m_ else text(name_node)  # the grammar can glue `:value` onto a dotted name
             if name_node.type == "identifier" and ("." in raw or raw in scope):
                 return  # local/param, or a.b field access (not a global name)
             tgt = qualify(raw)
-            if tgt == ".z.s":
-                return  # self-reference to the running lambda
+            if tgt == ".z.s" or tgt.startswith(".z.m."):
+                return  # `.z.s` is the running lambda; `.z.m` is the per-module namespace, unresolvable statically
             if qsql_gated and tgt not in file_defs:
                 return  # probably a table column
             add_edge(owner, ensure_external_node(tgt, line), relation, line, "INFERRED")
@@ -252,6 +260,7 @@ def extract_q(path: Path) -> dict:
                 add_edge(file_nid, nid, "imports", line)
 
     def handle_system_call(node: Any) -> None:
+        system_ns(node)
         m = re.search(r'system\s*"l\s+([^"]+)"', text(node))
         if m:
             stem = Path(m.group(1).strip()).stem
