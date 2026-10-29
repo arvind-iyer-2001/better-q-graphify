@@ -13,6 +13,7 @@ from .measure import split_of
 def run_corpus(corpora: Path, split: str, jobs: int, timeout: int, out: Path) -> None:
     manifest = json.loads((corpora / "MANIFEST.json").read_text())
     repos = [m for m in manifest if split in ("all", split_of(m["dir"]))]
+    out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
     if out.exists():
         done = {json.loads(l)["root"] for l in out.read_text().splitlines() if l.strip()}
