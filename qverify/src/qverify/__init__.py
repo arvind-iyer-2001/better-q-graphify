@@ -34,6 +34,8 @@ def main() -> None:
             st = Counter(s["status"] for s in res["status"].values())
             ev = Counter()
             for e in res["edges"]:
+                if e["tier"] == "T3c" and any("supported by a name inside" in x for x in e["evidence"]):
+                    ev["agree"] += 1
                 if e["tier"] == "T3":
                     ev["agree" if "tree-sitter agrees" in e["evidence"] else
                        "dangling" if e["confidence"] == "AMBIGUOUS" else "t3_only"] += 1

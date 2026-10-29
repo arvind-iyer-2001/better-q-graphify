@@ -29,7 +29,7 @@ reflection (`value f`, T2 defs / T3 resolved references) -> merge with per-node/
 | # | Task | Priority |
 |---|------|----------|
 | 1 | Isolate name collisions in calibration (load each script in a fresh namespace) so precision is not understated | med |
-| 2 | Residual kdb refutations (~17 non-collision): inspect and classify | med |
+| 2 | Residual kdb refutations: ~9 non-collision (compound-assign on undeclared name, qsql column vs global ambiguity) | low |
 | 3 | Real-corpus load errors are environmental (.so modules, data files, `.utl.require`); stub or preload | med |
 | 4 | Calibrate remaining SCORES (only edge_t0_known is measured: 0.95, n=318); needs per-relation and per-def scores | med |
 | 5 | Feed `enrichment_queue` to graphify LLM step; mark results INFERRED below T3 | med |

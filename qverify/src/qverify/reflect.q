@@ -20,7 +20,7 @@ kind:{$[x=100h;"lambda";x=98h;"table";x=99h;"dict";x within 101 112h;"function";
 / globals / symbol constants of a lambda including lambdas nested in its constants (value f does not descend)
 glob:{[v] x:value v;g:(1_x 3) except `;cs:-1_4_x;ls:cs where 100h=type each cs;g,raze glob each ls}
 syms:{[v] x:value v;cs:-1_4_x;ls:cs where 100h=type each cs;(distinct raze symc each cs),raze syms each ls}
-symc:{$[-11h=type x;enlist x;11h=type x;x;`symbol$()]}
+symc:{$[-11h=type x;enlist x;11h=type x;x;0h=type x;raze symc each x;`symbol$()]}
 lam:{[v] x:value v;g:x 3;
   sc:distinct syms v;
   ctx:$[count g;first g;`];

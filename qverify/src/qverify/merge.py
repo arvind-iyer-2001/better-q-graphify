@@ -18,7 +18,7 @@ SCORES = {
     "def_z_handler": 0.75,
     "edge_agree": 0.99, "edge_t3": 0.95, "edge_dangling": 0.35,
     "edge_t0_known": 0.70, "edge_t0_unknown": 0.40,
-    "edge_symconst": 0.60, "import_ok": 0.95, "import_missing": 0.35,
+    "edge_symconst": 0.60, "edge_qsql_support": 0.85, "import_ok": 0.95, "import_missing": 0.35,
 }
 _DYNAMIC = re.compile(r'\b(value|eval|reval)\b|\bparse\b')
 
@@ -157,10 +157,18 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
                      ["dangling reference: raises an error at runtime when executed"])
             queue.append({"node": nid, "reason": "dangling reference", "snippet": f"{src} -> {tgt}"})
 
+    def sym_candidates(rd, sym):
+        ctx = rd.get("ctx") or ""
+        out = [sym]
+        if not sym.startswith(".") and ctx:
+            out.insert(0, f".{ctx}.{sym}")
+        return out
+
     # ---- edges: symbol constants naming defined objects (passed by name, e.g. `trade) ----
     for q, rd in rt_defs.items():
-        for sym in rd.get("symconst", []):
-            if sym in def_id and sym != q and (q, sym) not in t3:
+        for raw_sym in rd.get("symconst", []):
+            sym = next((c for c in sym_candidates(rd, raw_sym) if c in def_id), None)
+            if sym is not None and (q, sym) not in t3 and (q, sym) not in t0_keys:
                 add_edge(def_id[q], def_id[sym], "references", nodes[def_id[q]]["source_file"],
                          int(nodes[def_id[q]]["source_location"].lstrip("L")), "T3c", S["edge_symconst"],
                          [f"symbol constant `{sym} names a defined {nodes[def_id[sym]]['kind']}; may be data, not a reference"])
@@ -170,6 +178,12 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
     for (src, tgt), (file, relation, line) in t0_keys.items():
         if (src, tgt) in t3 or src not in def_id:
             continue
+        if src in rt_defs and any(tgt == c for sy in rt_defs[src].get("symconst", []) for c in sym_candidates(rt_defs[src], sy)):
+            if tgt in def_id:
+                add_edge(def_id[src], def_id[tgt], relation, file, line, "T3c", S["edge_qsql_support"],
+                         ["tree-sitter edge supported by a name inside a compiled qsql expression "
+                          "(value f keeps those in constants, not in the globals list)"])
+                continue
         tail = tgt.rsplit(".", 1)[-1]
         is_kw = tgt not in def_id and (tail in keywords or tail in ("x", "y", "z") or not tail or not tail[0].isalpha())
         if src in reflected:

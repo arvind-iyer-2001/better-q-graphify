@@ -1,6 +1,6 @@
 {
-  "edge_t0_known": 0.95,
-  "n_edges": 318,
+  "edge_t0_known": 0.97,
+  "n_edges": 319,
   "sources": [
     "cookbook",
     "kdb",
