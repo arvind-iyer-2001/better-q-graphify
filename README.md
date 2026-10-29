@@ -29,8 +29,9 @@ uv run pytest
 ## Requirements and safety
 
 - q at `~/.kx/bin/q` (or `Q=`), macOS (`sandbox-exec`), Python 3.14 via uv
-- tree-sitter-q wheel vendored in `qverify/vendor/`; its q extractor is loaded from
-  `~/development/q-tree-sitter/tools/graphify_q/q.py` (override with `QV_T0_EXTRACTOR`)
+- tree-sitter-q wheel vendored in `qverify/vendor/`. The T0 extractor (`extractor_q.py`) lives in this repo:
+  scope-aware (params/locals/implicit x,y,z shadow globals), ignores q primitives, emits `reads` edges.
+  `extractor_q_stock.py` is a frozen copy of the original, used only by `qverify baseline`.
 - `--execute` runs the code being analysed. Each file runs in its own q process under a sandbox that
   denies network, file writes and process execution. File reads are allowed except common credential
   directories. Without `--execute` everything stays at T0.

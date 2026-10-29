@@ -68,8 +68,9 @@ def baseline(root: Path) -> dict:
     """Stock graphify behaviour: raw output of the q extractor, no verification."""
     root = root.resolve()
     nodes, edges, seen = [], [], set()
+    from .extractor_q_stock import extract_q as stock
     for f in discover(root):
-        raw = t0.extract(f).get("raw", {"nodes": [], "edges": []})
+        raw = stock(f)
         for n in raw["nodes"]:
             if n["id"] not in seen:
                 seen.add(n["id"])
