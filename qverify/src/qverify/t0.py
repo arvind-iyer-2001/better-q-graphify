@@ -21,7 +21,7 @@ def extract(path: Path) -> dict:
             owner[e["target"]] = label[e["target"]]
     edges, imports = [], []
     for e in raw["edges"]:
-        if e["relation"] in ("calls", "uses", "reads") and e["source"] in owner:
+        if e["relation"] in ("calls", "uses", "reads", "writes") and e["source"] in owner:
             edges.append((owner[e["source"]], label[e["target"]], e["relation"], line(e.get("source_location"))))
         elif e["relation"] == "imports":
             imports.append((label[e["target"]], line(e.get("source_location"))))

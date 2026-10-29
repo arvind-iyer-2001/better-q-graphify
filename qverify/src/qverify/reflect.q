@@ -17,11 +17,14 @@ b0:snap[]
 ex:{@[{get x;1b};x;{0b}]}
 ctxres:{[ctx;g] s:string g;$[("."=first s);g;ctx~`;g;`$".",(string ctx),".",s]}
 kind:{$[x=100h;"lambda";x=98h;"table";x=99h;"dict";x within 101 112h;"function";x<0h;"atom";"value"]}
+/ globals / symbol constants of a lambda including lambdas nested in its constants (value f does not descend)
+glob:{[v] x:value v;g:(1_x 3) except `;cs:-1_4_x;ls:cs where 100h=type each cs;g,raze glob each ls}
+syms:{[v] x:value v;cs:-1_4_x;ls:cs where 100h=type each cs;(distinct raze symc each cs),raze syms each ls}
 symc:{$[-11h=type x;enlist x;11h=type x;x;`symbol$()]}
 lam:{[v] x:value v;g:x 3;
-  sc:distinct raze symc each -1_4_x;
+  sc:distinct syms v;
   ctx:$[count g;first g;`];
-  refs:(1_g) except `;
+  refs:distinct glob v;
   rr:{[c;s] r:ctxres[c;s];`raw`res`ex!(string s;string r;ex r)}[ctx] each refs;
   `params`locals`ctx`refs`symconst`src!(string each x 1;string each x 2;string ctx;rr;string each sc;last x)}
 describe:{[nm;v] t:type v;

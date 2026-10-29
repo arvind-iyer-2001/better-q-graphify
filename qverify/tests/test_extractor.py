@@ -9,7 +9,7 @@ def edges(tmp_path: Path, code: str) -> set[tuple[str, str, str]]:
     r = extract_q(f)
     lab = {n["id"]: n["label"] for n in r["nodes"]}
     return {(lab[e["source"]], e["relation"], lab[e["target"]])
-            for e in r["edges"] if e["relation"] in ("calls", "reads", "uses")}
+            for e in r["edges"] if e["relation"] in ("calls", "reads", "uses", "writes")}
 
 
 def test_builtins_are_not_references(tmp_path):
@@ -57,3 +57,14 @@ def test_qsql_columns_are_not_globals_unless_defined_here(tmp_path):
 
 def test_self_reference_ignored(tmp_path):
     assert ("f", "calls", ".z.s") not in edges(tmp_path, "f:{.z.s x}\n")
+
+
+def test_global_writes(tmp_path):
+    e = edges(tmp_path, "g:0\nt:([]a:1 2)\nf:{g::1}\nh:{g+::1}\nk:{.ns.v:1}\nm:{t[0]:5}\nn:{g:1; g}\n")
+    assert ("f", "writes", "g") in e and ("h", "writes", "g") in e
+    assert ("k", "writes", ".ns.v") in e and ("m", "writes", "t") in e
+    assert not any(s == "n" for s, _, _ in e)  # `g:1` inside a lambda is a local
+
+
+def test_self_recursion_kept(tmp_path):
+    assert ("f", "calls", "f") in edges(tmp_path, "f:{$[x>0;f x-1;0]}\n")

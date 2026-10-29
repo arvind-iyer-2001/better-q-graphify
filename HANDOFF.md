@@ -4,15 +4,18 @@
 `qverify/` adds a q-verified confidence layer on top of the existing tree-sitter-q grammar
 (`~/development/q-tree-sitter`, not modified). Pipeline: tree-sitter extraction (T0) -> sandboxed live q
 reflection (`value f`, T2 defs / T3 resolved references) -> merge with per-node/edge `tier`,
-`confidence_score`, `evidence` -> graphify build/cluster/report. 17 tests pass (`uv run pytest`).
+`confidence_score`, `evidence` -> graphify build/cluster/report. 19 tests pass (`uv run pytest`).
 
 ## Done (extractor, this repo only)
 - `extractor_q.py`: vendored + rewritten. Scope analysis (params, implicit x/y/z, `name:` locals; no closures),
   only identifier/dotted_name nodes are refs (builtins ignored), `reads` edges for non-call global refs,
   qsql columns gated to names defined in-file, `.z.s` ignored. 10 unit tests in `tests/test_extractor.py`.
-- Raw T0 edge accuracy vs q on 90 real files (before -> after): precision 17-22% -> 63-97%,
-  recall 52-81% -> 91-97%. Excluding name collisions from loading unrelated scripts into one q
-  (39/57 of kdb's refutations): precision 85-100%.
+- `writes` relation (`x::v`, `x+:v`, `.ns.x:v`, `a[i]:v`), self-recursion kept.
+- Reflector now descends into nested lambdas (value f does not list their globals) - this was a
+  measurement bug that understated extractor precision.
+- T0 edge accuracy vs q on 90 real files, raw extractor -> now (precision / recall):
+  cookbook 22%/53% -> 95%/100%; kdb 20%/74% -> 68%/99% (89% excluding name collisions between
+  unrelated scripts loaded as one project); reQ 17%/81% -> 100%/100%.
 - `extractor_q_stock.py` is a frozen copy of the original, used by `qverify baseline`.
 
 ## Done (earlier)
@@ -26,7 +29,7 @@ reflection (`value f`, T2 defs / T3 resolved references) -> merge with per-node/
 | # | Task | Priority |
 |---|------|----------|
 | 1 | Isolate name collisions in calibration (load each script in a fresh namespace) so precision is not understated | med |
-| 2 | Remaining T0 misses (~10): table-literal and control-flow edge cases | med |
+| 2 | Residual kdb refutations (~17 non-collision): inspect and classify | med |
 | 3 | Real-corpus load errors are environmental (.so modules, data files, `.utl.require`); stub or preload | med |
 | 4 | Calibrate SCORES empirically per tier instead of policy constants | med |
 | 5 | Feed `enrichment_queue` to graphify LLM step; mark results INFERRED below T3 | med |

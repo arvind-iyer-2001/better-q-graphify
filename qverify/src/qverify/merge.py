@@ -139,6 +139,8 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
         if tgt in def_id:
             kind = nodes[def_id[tgt]]["kind"]
             relation = "calls" if kind in ("lambda", "function") else "uses"
+            if agree and t0_keys[(src, tgt)][1] == "writes":
+                relation = "writes"  # q only says "references"; the syntax knows it is an assignment
             sc = S["edge_agree"] if agree else S["edge_t3"]
             add_edge(def_id[src], def_id[tgt], relation, sfile, line, "T3", sc,
                      ["q resolved this global reference (value f)"] + (["tree-sitter agrees"] if agree else ["tree-sitter missed it"]))

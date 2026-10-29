@@ -7,7 +7,8 @@ reference extraction:
   are q primitives and never become edges.
 * a lambda's parameters, implicit x/y/z and `name:` locals shadow globals (q lambdas are not closures,
   so a nested lambda does not see its parent's locals).
-* non-call global references become `reads` edges (previously only calls/indexing produced edges).
+* non-call global references become `reads` edges, assignments to globals (`::`, `+:`, `.ns.x:`, `a[i]:`) `writes` edges,
+  and self-recursion is kept (previously only calls/indexing produced edges).
 * qsql clauses (`select a, b by c where d`): bare names there are usually table columns. They produce
   an edge only when the name is defined in this file; the `from` table produces a `uses` edge unless it
   is a parameter/local.
@@ -37,7 +38,7 @@ def extract_q(path: Path) -> dict:
     """Extract functions, variables, calls, reads, imports, and table uses from a .q file.
 
     Node fields: id, label, file_type, source_file, source_location
-    Edge fields: source, target, relation (calls|reads|uses|contains|imports), confidence, source_file
+    Edge fields: source, target, relation (calls|reads|writes|uses|contains|imports), confidence, source_file
     """
     try:
         parser = _parser()
@@ -151,8 +152,6 @@ def extract_q(path: Path) -> dict:
                 return  # self-reference to the running lambda
             if qsql_gated and tgt not in file_defs:
                 return  # probably a table column
-            if label_to_nid.get(tgt) == owner:
-                return
             add_edge(owner, ensure_external_node(tgt, line), relation, line, "INFERRED")
 
         if t == "lambda":
@@ -166,10 +165,20 @@ def extract_q(path: Path) -> dict:
             return
         if t == "assignment":
             left, right = node.child_by_field_name("left"), node.child_by_field_name("right")
-            if left is not None and left.type not in _NAMES:
-                for c in left.children:  # a[i]:v - the head is a write target, the index is a read
-                    if c.type not in _NAMES:
-                        refs_in(c, owner, scope, in_qsql)
+            op = node.child_by_field_name("operator")
+            optext = text(op) if op is not None else ":"
+            if left is not None:
+                if left.type in _NAMES:
+                    # `x:v` in a lambda is a local (see lambda_scope); `.ns.x:v`, `x::v`, `x+:v`, `x,:v` write a global
+                    if left.type == "dotted_name" or optext != ":":
+                        ref(left, "writes")
+                else:
+                    head = left.child_by_field_name("function") if left.type in ("index", "call") else None
+                    if head is not None and head.type in _NAMES:
+                        ref(head, "writes")  # a[i]:v amends the global a (ref() skips locals)
+                    for c in left.children:
+                        if head is None or c.id != head.id:
+                            refs_in(c, owner, scope, in_qsql)
             if right is not None:
                 refs_in(right, owner, scope, in_qsql)
             return

@@ -38,6 +38,14 @@ def main() -> None:
             nref = sum(1 for n in res["nodes"] if n["kind"] == "lambda" and n["tier"] == "T2")
             ag, ms = ev["agree"], ev["t3_only"]
             rf_all = len(res["refuted"])
+            from collections import defaultdict
+            from . import t0 as _t0
+            from .pipeline import discover
+            owners = defaultdict(set)
+            for f in discover(r):
+                for q in _t0.extract(f)["defs"]:
+                    owners[q].add(f)
+            uniq_rf = sum(1 for x in res["refuted"] if not x["kw"] and len(owners[x["edge"].split(" -> ")[0]]) <= 1)
             rf = sum(1 for x in res["refuted"] if not x["kw"])  # after keyword filter
             print(json.dumps({"root": r.name, "files": dict(st), "reflected_lambdas": nref,
                               "edges_agree": ag, "edges_t0_missed": ms, "edges_t0_refuted_before_filter": rf_all, "edges_t0_refuted_after_filter": rf,
@@ -45,6 +53,7 @@ def main() -> None:
                               "dangling": ev["dangling"],
                               "T0_precision_before": round(ag / (ag + rf_all), 3) if ag + rf_all else None,
                               "T0_precision_after": round(ag / (ag + rf), 3) if ag + rf else None,
+                              "T0_precision_unique_names": round(ag / (ag + uniq_rf), 3) if ag + uniq_rf else None,
                               "T0_recall_vs_q": round(ag / (ag + ms), 3) if ag + ms else None}))
         return
 
