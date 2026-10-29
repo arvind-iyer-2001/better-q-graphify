@@ -149,9 +149,11 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
             add_node(nid, q, file, line, kind, tier, score, ev, dangling=(kind == "unresolved"))
         return nid
 
+    t0_lambda = {(rel(f), q) for f, d in t0.items() for q in d.get("lambda_defs", ())}
     for (file, src, res), ref in t3.items():
         skey = (file, src)
         agree = (file, src, res) in t0_keys
+        indirect = not agree and skey in t0_defs and skey not in t0_lambda
         line = t0_keys[(file, src, res)][1] if agree else int(nodes[def_id[skey]]["source_location"].lstrip("L"))
         tkey = resolve(res, file)
         if tkey is not None:
@@ -161,7 +163,10 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
                 relation = "writes"  # q only says "references"; the syntax knows it is an assignment
             sc = S["edge_agree"] if agree else S["edge_t3"]
             add_edge(def_id[skey], def_id[tkey], relation, file, line, "T3", sc,
-                     ["q resolved this global reference (value f)"] + (["tree-sitter agrees"] if agree else ["tree-sitter missed it"]))
+                     ["q resolved this global reference (value f)"] + (
+                         ["tree-sitter agrees"] if agree else
+                         ["defining expression is not a lambda literal; q followed the function it evaluates to"] if indirect else
+                         ["tree-sitter missed it"]))
         elif ref["ex"]:
             continue  # resolves to a q builtin (e.g. .z.p); not part of the project graph
         else:
@@ -190,7 +195,6 @@ def merge(root: Path, t0: dict[Path, dict], rt: dict, status: dict[Path, dict],
     # ---- edges: T0 not already covered --------------------------------------
     # a def whose right-hand side is not a lambda literal (e.g. `f:$[c;g;h]`) has tree-sitter edges from the
     # *defining expression*, while q reflects the chosen function: the two are not comparable
-    t0_lambda = {(rel(f), q) for f, d in t0.items() for q in d.get("lambda_defs", ())}
     reflected = {k for k, d in rt_defs.items() if d["kind"] == "lambda" and (k not in t0_defs or k in t0_lambda)}
     for (file, src, tgt), (relation, line) in t0_keys.items():
         skey = (file, src)

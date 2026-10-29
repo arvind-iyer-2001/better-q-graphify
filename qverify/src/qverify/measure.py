@@ -23,7 +23,8 @@ def measure(root: Path, samples: int = 25) -> dict:
             qsql += 1
         if e["tier"] == "T3":
             ev["agree" if "tree-sitter agrees" in e["evidence"] else
-               "dangling" if e["confidence"] == "AMBIGUOUS" else "t3_only"] += 1
+               "dangling" if e["confidence"] == "AMBIGUOUS" else
+                       "indirect" if "not a lambda literal" in " ".join(e["evidence"]) else "t3_only"] += 1
     ag = ev["agree"] + qsql
     rf = [x for x in res["refuted"] if not x["kw"]]
     lab = {n["id"]: n for n in res["nodes"]}

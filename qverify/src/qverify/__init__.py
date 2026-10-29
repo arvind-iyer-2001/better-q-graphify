@@ -55,7 +55,8 @@ def main() -> None:
                     ev["agree"] += 1
                 if e["tier"] == "T3":
                     ev["agree" if "tree-sitter agrees" in e["evidence"] else
-                       "dangling" if e["confidence"] == "AMBIGUOUS" else "t3_only"] += 1
+                       "dangling" if e["confidence"] == "AMBIGUOUS" else
+                       "indirect" if "not a lambda literal" in " ".join(e["evidence"]) else "t3_only"] += 1
             nref = sum(1 for n in res["nodes"] if n["kind"] == "lambda" and n["tier"] == "T2")
             ag, ms = ev["agree"], ev["t3_only"]
             rf_all = len(res["refuted"])

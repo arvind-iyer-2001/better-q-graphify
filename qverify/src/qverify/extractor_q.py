@@ -18,7 +18,6 @@ from __future__ import annotations
 import importlib
 import re
 import sys
-import time
 from pathlib import Path
 from typing import Any
 
@@ -29,7 +28,6 @@ from .ids import make_id as _make_id
 _QSQL = {"select_statement", "exec_statement", "update_statement", "delete_statement"}
 _QSQL_CLAUSES = {"select_clause", "by_clause", "where_clause"}
 _ADVERB_FUNS = {"each", "peach", "over", "scan", "prior", "sv", "vs"}
-PARSE_BUDGET_S = 10.0
 _NAMES = {"identifier", "dotted_name"}
 
 
@@ -53,11 +51,7 @@ def extract_q(path: Path) -> dict:
 
     try:
         src = Path(path).read_bytes()
-        t_start = time.monotonic()
-        # the grammar can run away on some inputs (see q-tree-sitter notes): cancel after a time budget
-        tree = parser.parse(src, progress_callback=lambda _state: time.monotonic() - t_start > PARSE_BUDGET_S)
-        if tree is None:
-            return {"nodes": [], "edges": [], "error": f"parse cancelled after {PARSE_BUDGET_S}s"}
+        tree = parser.parse(src)
         root = tree.root_node
     except Exception as e:
         return {"nodes": [], "edges": [], "error": str(e)}
