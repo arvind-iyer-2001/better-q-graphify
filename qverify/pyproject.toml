@@ -1,0 +1,27 @@
+[project]
+name = "qverify"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Arvind Iyer", email = "arvind.iyer.2001@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "graphifyy>=0.9.97",
+    "tree-sitter-q",
+]
+
+[project.scripts]
+qverify = "qverify:main"
+
+[build-system]
+requires = ["uv_build>=0.11.19,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+tree-sitter-q = { path = "vendor/tree_sitter_q-0.1.0-cp314-cp314-macosx_26_0_arm64.whl" }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]

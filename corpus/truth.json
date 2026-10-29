@@ -1,0 +1,29 @@
+{
+  "_note": "Hand-written from reading the corpus. calls: [caller, callee, resolves_at_runtime]. Builtins (.z.p) excluded.",
+  "calls": [
+    [".an.norm", ".util.clamp", true],
+    [".an.avgpx", ".util.mean", true],
+    [".an.avgpx", ".an.trade", false],
+    [".an.report", ".log.info", true],
+    [".an.report", ".an.vwap", true],
+    [".an.report", ".an.spread", true],
+    [".an.rebuild", ".log.info", true],
+    [".an.rebuild", ".an.helperMissing", false],
+    [".an.means", ".util.mean", true],
+    ["upd", ".log.info", true],
+    [".feed.tick", "upd", true],
+    [".feed.start", ".log.info", true],
+    [".feed.start", ".feed.tick", true],
+    ["main", ".feed.start", true],
+    ["main", ".an.report", true],
+    ["main", ".an.avgpx", true],
+    [".log.info", ".log.msg", true],
+    [".log.err", ".log.msg", true],
+    [".log.unusedlog", ".log.msg", true],
+    [".z.ts", ".feed.tick", true]
+  ],
+  "imports": [
+    ["main", "analytics"], ["main", "feed"], ["analytics", "util"], ["analytics", "log"],
+    ["analytics", "schema"], ["feed", "schema"], ["feed", "log"]
+  ]
+}
