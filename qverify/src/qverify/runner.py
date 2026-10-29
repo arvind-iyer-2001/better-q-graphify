@@ -14,11 +14,11 @@ def q_binary() -> str:
     return os.environ.get("Q") or str(Path.home() / ".kx/bin/q")
 
 
-def _profile(outdir: str) -> str:
+def _profile(outdir: str, root: str) -> str:
+    """Deny network, writes (except outdir) and process exec; deny reads under $HOME except q's install and `root`."""
     q = q_binary()
     home = str(Path.home())
-    denied = "\n".join(f'(deny file-read* (subpath "{home}/{p}"))'
-                       for p in (".ssh", ".aws", ".gnupg", ".config/gh", ".netrc"))
+    kx = str(Path(q).resolve().parents[1])
     return f"""(version 1)
 (allow default)
 (deny network*)
@@ -26,7 +26,8 @@ def _profile(outdir: str) -> str:
 (deny process-exec* (with no-log))
 (allow process-exec (literal "{q}"))
 (allow file-write* (subpath "{outdir}") (literal "/dev/null"))
-{denied}
+(deny file-read* (subpath "{home}"))
+(allow file-read* (subpath "{kx}") (subpath "{root}") (subpath "{REFLECT.parent}") (literal "{home}"))
 """
 
 
@@ -35,7 +36,7 @@ def reflect(root: Path, files: list[Path], timeout: int = 60) -> dict:
     with tempfile.TemporaryDirectory() as td:
         td = str(Path(td).resolve())
         prof = Path(td) / "p.sb"
-        prof.write_text(_profile(td))
+        prof.write_text(_profile(td, str(root.resolve())))
         out = Path(td) / "out.json"
         env = {**os.environ, "QV_FILES": ":".join(str(f) for f in files), "QV_OUT": str(out)}
         cmd = ["sandbox-exec", "-f", str(prof), q_binary(), str(REFLECT), "-q", "-w", "1024"]
