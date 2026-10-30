@@ -103,3 +103,10 @@ def test_names_differing_only_by_case_stay_distinct(tmp_path):
     e = edges(tmp_path, "l:1\nL:2\nf:{l}\ng:{L}\n")
     assert ("f", "reads", "l") in e and ("g", "reads", "L") in e
     assert ("f", "reads", "L") not in e and ("g", "reads", "l") not in e
+
+
+def test_parse_error_does_not_swallow_later_definitions(tmp_path):
+    code = ("h:{x}\nbad:{\n update s:2000.01.01D0^s,r:2000.01.01D0^r from `t where c=x;\n"
+            " h exec q from t where c=x;}\ng:{h x}\nk:{g x}\n")
+    e = edges(tmp_path, code)
+    assert ("g", "calls", "h") in e and ("k", "calls", "g") in e

@@ -15,6 +15,7 @@ reference extraction:
 """
 from __future__ import annotations
 
+import bisect
 import importlib
 import re
 import sys
@@ -37,6 +38,59 @@ def _parser():
     return Parser(Language(mod.language()))
 
 
+def _statements(src: bytes, start: int, end: int) -> list[tuple[int, int]]:
+    """Split src[start:end] into q top-level statements the way q's loader does: a line that starts in
+    column 0 begins a new statement, indented lines continue it. `/` .. `\\` block comments stay whole."""
+    spans: list[tuple[int, int]] = []
+    cur = None
+    in_block = False
+    pos = start
+    while pos < end:
+        nl = src.find(b"\n", pos, end)
+        nl = end if nl < 0 else nl + 1
+        line = src[pos:nl]
+        body = line.rstrip(b"\r\n")
+        if in_block:
+            in_block = body != b"\\"
+            new = False
+        elif body == b"/":
+            in_block, new = True, True
+        else:
+            new = bool(body) and body[:1] not in (b" ", b"\t")
+        if new or cur is None:
+            if cur is not None:
+                spans.append((cur, pos))
+            cur = pos
+        pos = nl
+    if cur is not None:
+        spans.append((cur, end))
+    return spans
+
+
+def _top_nodes(parser: Any, src: bytes, root: Any) -> list[Any]:
+    """Top-level nodes of the file. One literal the grammar cannot read derails everything after it
+    (ERROR plus loose tokens up to hundreds of lines), so a file with any parse error is re-parsed
+    statement by statement and only the statements that really fail are lost."""
+    if not root.has_error:
+        return list(root.children)
+    from tree_sitter import Point, Range
+
+    starts = [0] + [m.end() for m in re.finditer(rb"\n", src)]  # byte offset of each line start
+
+    def point(b: int) -> Point:
+        row = bisect.bisect_right(starts, b) - 1
+        return Point(row, b - starts[row])
+
+    out: list[Any] = []
+    try:
+        for a, b in _statements(src, 0, len(src)):
+            parser.included_ranges = [Range(point(a), point(b), a, b)]
+            out.extend(parser.parse(src).root_node.children)
+    finally:
+        parser.included_ranges = []
+    return out
+
+
 def extract_q(path: Path) -> dict:
     sys.setrecursionlimit(max(sys.getrecursionlimit(), 20000))
     """Extract functions, variables, calls, reads, imports, and table uses from a .q file.
@@ -53,6 +107,7 @@ def extract_q(path: Path) -> dict:
         src = Path(path).read_bytes()
         tree = parser.parse(src)
         root = tree.root_node
+        tops = _top_nodes(parser, src, root)
     except Exception as e:
         return {"nodes": [], "edges": [], "error": str(e)}
 
@@ -125,7 +180,8 @@ def extract_q(path: Path) -> dict:
         for c in node.children:
             prepass(c)
 
-    prepass(root)
+    for top in tops:
+        prepass(top)
     ns_stack[:] = [""]
 
     # ---- lambda scope: params, implicit x/y/z, `name:` locals ----
@@ -301,5 +357,6 @@ def extract_q(path: Path) -> dict:
         for c in node.children:
             walk(c)
 
-    walk(root)
+    for top in tops:
+        walk(top)
     return {"nodes": nodes, "edges": [e for e in edges if e["source"] in seen_ids and e["target"] in seen_ids]}
