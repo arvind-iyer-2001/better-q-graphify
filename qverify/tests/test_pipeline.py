@@ -60,3 +60,16 @@ def test_unexecuted_reference_edges_never_extracted():
     r = analyse(CORPUS, execute=False)
     refs = [e for e in r["edges"] if e["relation"] in ("calls", "reads", "writes", "uses")]
     assert refs and all(e["confidence"] != "EXTRACTED" for e in refs)
+
+
+def test_loads_resolve_relative_to_the_enclosing_repo(tmp_path):
+    from qverify import order
+
+    (tmp_path / "app" / ".git").mkdir(parents=True)
+    (tmp_path / "app" / "conf").mkdir()
+    (tmp_path / "app" / "conf" / "c.q").write_text("c:1\n")
+    (tmp_path / "app" / "src").mkdir()
+    f = tmp_path / "app" / "src" / "x.q"
+    f.write_text("\\l conf/c.q\n")  # neither the workspace root nor src/ has conf/, only the repo root does
+    (_, hit, _), = order.imports_of(f, tmp_path, {})
+    assert hit == (tmp_path / "app" / "conf" / "c.q").resolve()

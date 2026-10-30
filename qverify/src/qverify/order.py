@@ -7,6 +7,16 @@ from pathlib import Path
 _IMPORT = re.compile(r'^\s*\\l\s+(\S+)|system\s*"l\s+([^"\s]+)', re.M)
 
 
+def repo_root(path: Path, root: Path) -> Path | None:
+    """Nearest ancestor of `path` (below `root`) holding a .git: q projects load relative to their own repo."""
+    for d in path.resolve().parents:
+        if d == root.resolve() or root.resolve() not in d.parents:
+            return None
+        if (d / ".git").exists():
+            return d
+    return None
+
+
 def imports_of(path: Path, root: Path, known: dict[str, Path]) -> list[tuple[str, Path | None, int]]:
     """Return (raw, resolved|None, line) for every load directive in `path`."""
     text = path.read_text(errors="replace")
@@ -15,7 +25,8 @@ def imports_of(path: Path, root: Path, known: dict[str, Path]) -> list[tuple[str
         raw = (m.group(1) or m.group(2)).strip().strip('"')
         line = text.count("\n", 0, m.start()) + 1
         try:
-            cand = [root / raw, path.parent / raw]
+            repo = repo_root(path, root)
+            cand = [root / raw, path.parent / raw] + ([repo / raw] if repo else [])
             hit = next((c.resolve() for c in cand if c.is_file()), None)
             if hit is None:  # q allows omitting the extension
                 hit = next((c.with_suffix(".q").resolve() for c in cand if c.with_suffix(".q").is_file()), None)

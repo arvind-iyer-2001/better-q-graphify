@@ -228,7 +228,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "graphifyy", specifier = ">=0.9.97" },
-    { name = "tree-sitter-q", path = "vendor/tree_sitter_q-0.1.0-cp314-cp314-macosx_26_0_arm64.whl" },
+    { name = "tree-sitter-q" },
 ]
 
 [package.metadata.requires-dev]
@@ -613,16 +613,13 @@ wheels = [
 [[package]]
 name = "tree-sitter-q"
 version = "0.1.0"
-source = { path = "vendor/tree_sitter_q-0.1.0-cp314-cp314-macosx_26_0_arm64.whl" }
+source = { registry = "vendor" }
 dependencies = [
     { name = "tree-sitter" },
 ]
 wheels = [
-    { filename = "tree_sitter_q-0.1.0-cp314-cp314-macosx_26_0_arm64.whl", hash = "sha256:35e5eeabafa8e8d6c9fb3a6e3a45e3758d915f1555d3b07018319f9cc7edf026" },
+    { path = "tree_sitter_q-0.1.0-cp314-cp314-macosx_26_0_arm64.whl" },
 ]
-
-[package.metadata]
-requires-dist = [{ name = "tree-sitter", specifier = ">=0.23,<0.26" }]
 
 [[package]]
 name = "tree-sitter-ruby"

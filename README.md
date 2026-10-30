@@ -45,3 +45,30 @@ capped at `INFERRED` regardless of the measured value (the files that fail to lo
 ## Status
 
 The `corpus/` test set is small and in-sample. See `HANDOFF.md` for measured results and open tasks.
+
+## Running on a Linux server (multi-repo workspace)
+
+Point `qverify` at the workspace directory that contains the repos. Files are discovered recursively, node ids are
+path-based (unique across repos), and `\l` loads resolve against the workspace root, the file's directory, or the
+file's own repo root (nearest `.git`).
+
+```bash
+# 1. grammar wheel for this machine (needs gcc; reads your q-tree-sitter checkout, never writes to it)
+scripts/build_grammar_wheel.sh /path/to/q-tree-sitter
+cd qverify && uv sync
+
+# 2. first run: structure only, executes nothing
+uv run qverify build /path/to/workspace --out /path/to/workspace-graph
+
+# 3. verified run: q loads each file inside a locked-down container
+export Q=$QHOME/l64/q          # your q binary; the licence is read from $QHOME (or $QLIC)
+export QV_IMAGE=debian:stable-slim   # any glibc image already on the server
+uv run qverify build /path/to/workspace --out /path/to/workspace-graph --execute
+```
+
+Sandbox backend (`QV_SANDBOX=sandbox-exec|docker`; default: macOS `sandbox-exec`, otherwise Docker). Per file, q runs in
+`docker run --network none --read-only --cap-drop ALL --no-new-privileges --pids-limit 256 --memory 2g`, with the workspace,
+`reflect.q` and the q install mounted read-only and one writable temp bind for the JSON result. A hung file is killed by
+name after the timeout. Not isolated: anything the image itself allows (the container can spawn processes, but cannot
+reach the network or write outside its temp bind). Files that need a network (`hopen`), data or a library missing in the
+container fail to load and stay `T0`/`INFERRED`; that is the intended safe default.
