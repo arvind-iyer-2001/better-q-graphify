@@ -14,6 +14,12 @@ Corpus: 240 repos / 5,284 real q files (content-filtered by `qdetect.py`), in gi
 - `extractor_q._top_nodes`: grammar ERROR (e.g. `2000.01.01D0^x`, a user-grammar gap, read-only) used to swallow hundreds of following lines (TorQ gateway.q: everything after line 160). Files with any parse error (12% of corpora files) are now re-parsed per top-level statement via `included_ranges`. Static gain across corpora: +467 nodes / +774 edges (<1%). Not yet measured through q: dev3 will include it, so TorQ misses should drop.
 - Report grammar gap to user: `D0^` timestamp-with-fraction followed by `^` fails to parse.
 
+## Server deployment (added after test split)
+Test split (run once): P 99.6% / R 89.0% (puzzle_solutions = 1,696 of 2,204 misses; 97.1% without it). See RESULTS.md.
+Docker sandbox backend (`runner.docker_command`, `QV_SANDBOX`), wheelhouse via `find-links = ["vendor"]`, `scripts/build_grammar_wheel.sh`,
+repo-root load resolution; README "Running on a Linux server". NOT verified on Linux: no Linux q or running Docker daemon here, only command
+construction is unit-tested. First server run: T0-only build, then `--execute` on one repo, then the workspace.
+
 ## Next (in order)
 1. User runs dev3 (I cannot: classifier blocks executing third-party q):
    `! cd /Users/arvindiyer/kdb-rea/qverify && uv run qverify corpus ../corpora --split dev --jobs 6 --timeout 600 --out ../corpora/results/dev3.jsonl 2>&1 | tail -5`
