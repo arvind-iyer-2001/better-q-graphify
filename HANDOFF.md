@@ -1,7 +1,7 @@
 # Handoff — qverify (2026-10-30)
 
 ## State
-`qverify/` adds a q-verified confidence layer over the user's tree-sitter-q grammar (`~/development/q-tree-sitter`, never modified). Pipeline: tree-sitter (T0) -> sandboxed live q reflection (T2 defs / T3 refs) -> merge with per-node/edge `tier`, `confidence_score`, `evidence` -> graphify. 29 tests pass. Repo: `/Users/arvindiyer/kdb-rea` = `arvind-iyer-2001/better-q-graphify` (private). All work pushed; HEAD `f3cafac`.
+`qverify/` adds a q-verified confidence layer over the user's tree-sitter-q grammar (`~/development/q-tree-sitter`, never modified). Pipeline: tree-sitter (T0) -> sandboxed live q reflection (T2 defs / T3 refs) -> merge with per-node/edge `tier`, `confidence_score`, `evidence` -> graphify.  Repo: `/Users/arvindiyer/kdb-rea` = `arvind-iyer-2001/better-q-graphify` (private). All work pushed; HEAD `6e39286`. 30 tests pass.
 
 ## Measured (dev split only; see `docs/RESULTS.md`)
 Corpus: 240 repos / 5,284 real q files (content-filtered by `qdetect.py`), in gitignored `corpora/`; `corpora/MANIFEST.json` committed. Split dev/test by sha1 of repo name.
@@ -9,6 +9,10 @@ Corpus: 240 repos / 5,284 real q files (content-filtered by `qdetect.py`), in gi
 - dev2 (105 repos, case-sensitive ids, builtin-in-qsql): refuted 91, missed 341, **P 98.9% / R 96.0%**
 - `test` split NOT yet run. Run once at the end, report as the honest number, never tune on it.
 - Result files in `corpora/results/` (gitignored). dev0 = old code + junk repos, ignore.
+
+## Done since dev2
+- `extractor_q._top_nodes`: grammar ERROR (e.g. `2000.01.01D0^x`, a user-grammar gap, read-only) used to swallow hundreds of following lines (TorQ gateway.q: everything after line 160). Files with any parse error (12% of corpora files) are now re-parsed per top-level statement via `included_ranges`. Static gain across corpora: +467 nodes / +774 edges (<1%). Not yet measured through q: dev3 will include it, so TorQ misses should drop.
+- Report grammar gap to user: `D0^` timestamp-with-fraction followed by `^` fails to parse.
 
 ## Next (in order)
 1. User runs dev3 (I cannot: classifier blocks executing third-party q):
