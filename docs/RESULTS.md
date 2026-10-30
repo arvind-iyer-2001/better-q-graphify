@@ -15,6 +15,7 @@ Corpus: public GitHub repos found by `scripts/fetch_corpus.py`, filtered by cont
 | **dev1** (clean corpus) | v3 | 105 | 8,214 | 131 | 350 | **98.4%** | **95.9%** |
 | dev2 (case-sensitive ids, builtin refs in qsql) | v4 | 105 | 8,239 | 91 | 341 | 98.9% | 96.0% |
 | **dev3** (`indirect` relabel, ERROR-region re-parse) | v5 | 105 | 8,342 | 91 | 108 | **98.9%** | **98.7%** |
+| **test** (held out, run once) | v5 | 135 | 17,883 | 66 | 2,204 | **99.6%** | **89.0%** |
 
 dev3 recall jump is mostly a metric change: defs whose rhs is not a lambda literal (e.g. resq `.utl.require:$[..]`) are no longer counted as tree-sitter misses (~100 edges); the ERROR-region re-parse accounts for the TorQ drop (88 -> 4).
 
@@ -24,3 +25,8 @@ missing data), 6% refused. Files that do not load are not judged and stay `T0`/`
 
 Known limits: edges inside `.z.m` (module namespace) are skipped; typed-null suffixes like `0nf` are a
 grammar gap worked around in the extractor; recall is measured only on functions q could reflect.
+
+Test split (135 repos, run once, no tuning afterwards): precision 99.6% holds. Recall 89.0% is dominated by one repo:
+`puzzle_solutions` (Advent-of-Code, 222 files) has 1,696 of the 2,204 misses; without it recall is 97.1%, and 98.6% without
+it and `q-Quiz` (274). Dev set had no repo like it, so this is the real generalization gap: a miss pattern (namespace-heavy
+`.genarch.*` calls) that dev never exercised. Per-repo precision (n=49 with >= 20 edges): median 100%, p10 95%, worst 89%.
